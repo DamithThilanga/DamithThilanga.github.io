@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Data Structures — Lesson 13</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="lesson-styles.css"/>
+</head>
+<body>
+<div class="page">
+
+  <div class="topbar">
+    <span class="topbar-course">Python Programming</span>
+    <span class="topbar-lesson">Lesson 13 of 20</span>
+  </div>
+
+  <div class="page-header">
+    <div class="label">Lesson 13</div>
+    <h1>Data Structures in Python</h1>
+    <p class="intro">
+      So far, your variables stored only one value at a time. Data structures let you store multiple values in a single variable — a fundamental need for any real program.
+    </p>
+  </div>
+
+  <div class="objectives">
+    <h2>By the end of this lesson you will be able to</h2>
+    <ul>
+      <li>Store multiple values in one variable using data structures</li>
+      <li>Understand the differences between lists, tuples, sets, and dictionaries</li>
+      <li>Access, update, and remove data stored in Python data structures</li>
+      <li>Select the appropriate data structure for a given task</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">01</span>
+      <h2>Why Do We Need Data Structures?</h2>
+    </div>
+    <p>So far, we used variables like this:</p>
+    <div class="code-block">
+      <pre><code><var>name</var> <op>=</op> <str>"John"</str>
+<var>age</var> <op>=</op> <num>25</num></code></pre>
+    </div>
+    <p>But what if you want to store multiple values? For example: 5 student names, 10 numbers, or a list of marks? You cannot create hundreds of separate variables. Instead, you use data structures.</p>
+    <div class="callout note">
+      <strong>Python has four main data structures for beginners</strong>
+      List, Tuple, Set, and Dictionary — each with different properties for different purposes.
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">02</span>
+      <h2>Lists — The Most Important Data Structure</h2>
+    </div>
+    <p>A list stores multiple values in order, using square brackets.</p>
+    <div class="code-block">
+      <pre><code><var>numbers</var> <op>=</op> [<num>10</num>, <num>20</num>, <num>30</num>, <num>40</num>]
+<var>names</var> <op>=</op> [<str>"John"</str>, <str>"Ann"</str>, <str>"Mike"</str>]</code></pre>
+    </div>
+
+    <p><strong>Accessing Values (Indexing)</strong> — Index starts from 0.</p>
+    <div class="code-block">
+      <pre><code><fn>print</fn>(<var>numbers</var>[<num>0</num>])   <cmt># 10 (first item)</cmt>
+<fn>print</fn>(<var>names</var>[<num>1</num>])    <cmt># Ann (second item)</cmt></code></pre>
+    </div>
+    <div class="callout warn">
+      <strong>Programmers count from 0</strong>
+      This is one of the most common mistakes beginners make. The first item is at index 0, not 1. That's also why this course started with Lesson 0 instead of Lesson 1.
+    </div>
+
+    <p><strong>Changing Values</strong></p>
+    <div class="code-block">
+      <pre><code><var>numbers</var>[<num>1</num>] <op>=</op> <num>25</num>
+<fn>print</fn>(<var>numbers</var>)</code></pre>
+    </div>
+    <div class="output-block">
+      <div class="out-label">Output</div>
+      [10, 25, 30, 40]
+    </div>
+
+    <p><strong>Adding Items</strong></p>
+    <div class="code-block">
+      <pre><code><var>numbers</var>.<fn>append</fn>(<num>50</num>)</code></pre>
+    </div>
+
+    <p><strong>Removing Items</strong></p>
+    <div class="code-block">
+      <pre><code><var>numbers</var>.<fn>remove</fn>(<num>30</num>)</code></pre>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">03</span>
+      <h2>Tuples — Like Lists, But Fixed</h2>
+    </div>
+    <p>A tuple is like a list, but it cannot be changed after it is created. Tuples use parentheses.</p>
+    <div class="code-block">
+      <pre><code><var>numbers</var> <op>=</op> (<num>10</num>, <num>20</num>, <num>30</num>)
+<fn>print</fn>(<var>numbers</var>[<num>0</num>])   <cmt># 10</cmt></code></pre>
+    </div>
+    <div class="mistake">
+      <div class="mistake-title">Tuples are immutable — you cannot change their values</div>
+      <div class="mistake-body">
+        <div class="code-compare">
+          <div class="pane wrong">
+            <span class="pane-tag wrong">Wrong — TypeError</span>
+            <pre><code><var>numbers</var>[<num>1</num>] <op>=</op> <num>50</num>   <cmt># TypeError: tuple does not support item assignment</cmt></code></pre>
+          </div>
+          <div class="pane correct">
+            <span class="pane-tag correct">Use a list if you need to change values</span>
+            <pre><code><var>numbers</var> <op>=</op> [<num>10</num>, <num>20</num>, <num>30</num>]
+<var>numbers</var>[<num>1</num>] <op>=</op> <num>50</num>   <cmt># Works</cmt></code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p>Use tuples when the data should not change — for example, days of the week or coordinates of a location.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">04</span>
+      <h2>Sets — No Duplicates</h2>
+    </div>
+    <p>A set stores unique values only — duplicates are automatically removed. Sets use curly braces.</p>
+    <div class="code-block">
+      <pre><code><var>numbers</var> <op>=</op> {<num>1</num>, <num>2</num>, <num>3</num>, <num>3</num>, <num>4</num>}
+<fn>print</fn>(<var>numbers</var>)</code></pre>
+    </div>
+    <div class="output-block">
+      <div class="out-label">Output</div>
+      {1, 2, 3, 4}
+    </div>
+    <p>The duplicate <code>3</code> is removed automatically.</p>
+
+    <p><strong>Adding and Removing Items</strong></p>
+    <div class="code-block">
+      <pre><code><var>numbers</var>.<fn>add</fn>(<num>5</num>)
+<var>numbers</var>.<fn>remove</fn>(<num>2</num>)</code></pre>
+    </div>
+    <div class="callout warn">
+      <strong>Sets are unordered</strong>
+      You cannot access items in a set using an index. Sets have no guaranteed order. Use sets when you only care about unique values, not their position.
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">05</span>
+      <h2>Dictionaries — Key-Value Pairs</h2>
+    </div>
+    <p>A dictionary stores data as key-value pairs. Each piece of data has a unique name (key) that you use to access it.</p>
+    <div class="code-block">
+      <pre><code><var>student</var> <op>=</op> {<str>"name"</str>: <str>"John"</str>, <str>"age"</str>: <num>20</num>, <str>"grade"</str>: <str>"A"</str>}
+<fn>print</fn>(<var>student</var>[<str>"name"</str>])   <cmt># John</cmt>
+<fn>print</fn>(<var>student</var>[<str>"age"</str>])    <cmt># 20</cmt></code></pre>
+    </div>
+
+    <p><strong>Changing Values</strong></p>
+    <div class="code-block">
+      <pre><code><var>student</var>[<str>"age"</str>] <op>=</op> <num>21</num></code></pre>
+    </div>
+
+    <p><strong>Adding New Key-Value Pairs</strong></p>
+    <div class="code-block">
+      <pre><code><var>student</var>[<str>"city"</str>] <op>=</op> <str>"Colombo"</str></code></pre>
+    </div>
+
+    <p><strong>Removing a Key-Value Pair</strong></p>
+    <div class="code-block">
+      <pre><code><kw>del</kw> <var>student</var>[<str>"grade"</str>]</code></pre>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">06</span>
+      <h2>Choosing the Right Data Structure</h2>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Data Structure</th>
+            <th>Ordered?</th>
+            <th>Changeable?</th>
+            <th>Duplicates?</th>
+            <th>Use When</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>List</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Ordered, changeable collection</td></tr>
+          <tr><td>Tuple</td><td>Yes</td><td>No</td><td>Yes</td><td>Fixed data that should not change</td></tr>
+          <tr><td>Set</td><td>No</td><td>Yes</td><td>No</td><td>Unique items only, order doesn't matter</td></tr>
+          <tr><td>Dictionary</td><td>Yes (Python 3.7+)</td><td>Yes</td><td>Keys: No</td><td>Data needs labels (key-value pairs)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="summary">
+    <h2>Lesson Summary</h2>
+    <ul>
+      <li>Lists (<code>[]</code>) store ordered, changeable values — the most commonly used data structure</li>
+      <li>List indexing starts at 0, not 1</li>
+      <li>Tuples (<code>()</code>) are like lists but immutable — use when data should not change</li>
+      <li>Sets (<code>{}</code>) store only unique values and are unordered — no index access</li>
+      <li>Dictionaries (<code>{key: value}</code>) store labeled data as key-value pairs</li>
+      <li>Choose the right data structure based on whether you need ordering, uniqueness, and mutability</li>
+    </ul>
+  </div>
+
+  <div class="next-lesson">
+    <div>
+      <div class="nl-label">Next lesson</div>
+      <div class="nl-title">Repetitive Tasks with Loops</div>
+    </div>
+    <a class="next-link" href="lesson-14.html">Continue →</a>
+  </div>
+
+</div>
+</body>
+</html>
