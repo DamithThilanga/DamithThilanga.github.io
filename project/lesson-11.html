@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Decision Making in Python — Lesson 11</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="lesson-styles.css"/>
+</head>
+<body>
+<div class="page">
+
+  <div class="topbar">
+    <span class="topbar-course">Python Programming</span>
+    <span class="topbar-lesson">Lesson 11 of 20</span>
+  </div>
+
+  <div class="page-header">
+    <div class="label">Lesson 11</div>
+    <h1>Decision Making in Python</h1>
+    <p class="intro">
+      Until now, your programs could only run step by step. From this lesson onward, your programs can make decisions using <code>if</code>, <code>else</code>, and <code>elif</code>.
+    </p>
+  </div>
+
+  <div class="objectives">
+    <h2>By the end of this lesson you will be able to</h2>
+    <ul>
+      <li>Write decision-making programs using <code>if</code>, <code>elif</code>, and <code>else</code></li>
+      <li>Use comparison operators such as <code>&gt;</code>, <code>&lt;</code>, <code>==</code>, <code>!=</code>, <code>&gt;=</code>, <code>&lt;=</code></li>
+      <li>Combine conditions using logical operators <code>and</code> and <code>or</code></li>
+      <li>Solve conditional problems with programmatic logic</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">01</span>
+      <h2>Why Do We Need Decision Making?</h2>
+    </div>
+    <p>In real life, we make decisions all the time. Since computer programs simulate and automate real-life scenarios, they also need this decision-making ability.</p>
+    <ul class="examples-list">
+      <li><span class="if-word">if</span> it rains → take an umbrella</li>
+      <li><span class="if-word">if</span> you are hungry → eat food</li>
+      <li><span class="if-word">if</span> marks are above 50 → pass</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">02</span>
+      <h2>The <code>if</code> Statement</h2>
+    </div>
+    <p>The simplest form of decision making. The indented block only runs when the condition is <strong>True</strong>.</p>
+
+    <div class="code-block">
+      <span class="code-filename">syntax</span>
+      <pre><code><kw>if</kw> condition:
+    <cmt># code runs if condition is True</cmt></code></pre>
+    </div>
+
+    <div class="code-block">
+      <span class="code-filename">example.py</span>
+      <pre><code><var>age</var> <op>=</op> <num>20</num>
+<kw>if</kw> <var>age</var> <op>&gt;</op> <num>18</num>:
+    <fn>print</fn>(<str>"You are an adult"</str>)</code></pre>
+    </div>
+
+    <div class="output-block">
+      <div class="out-label">Output</div>
+      You are an adult
+    </div>
+
+    <p class="mt-sm">How it works:</p>
+    <div class="steps">
+      <div class="step"><span class="step-n">1</span> Python evaluates the condition: <code>age &gt; 18</code></div>
+      <div class="step"><span class="step-n">2</span> If it is <strong>True</strong>, the indented code runs</div>
+      <div class="step"><span class="step-n">3</span> If it is <strong>False</strong>, it is skipped entirely</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">03</span>
+      <h2>Comparison Operators</h2>
+    </div>
+    <p>Conditions are usually comparisons. Python has six comparison operators:</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Operator</th>
+            <th>Meaning</th>
+            <th>Example</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>==</td><td>Equal to</td><td>a == b</td></tr>
+          <tr><td>!=</td><td>Not equal to</td><td>a != b</td></tr>
+          <tr><td>&gt;</td><td>Greater than</td><td>a &gt; b</td></tr>
+          <tr><td>&lt;</td><td>Less than</td><td>a &lt; b</td></tr>
+          <tr><td>&gt;=</td><td>Greater than or equal to</td><td>a &gt;= b</td></tr>
+          <tr><td>&lt;=</td><td>Less than or equal to</td><td>a &lt;= b</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">04</span>
+      <h2>Indentation and Code Blocks</h2>
+    </div>
+    <p>After the <code>if</code> keyword and the colon <code>:</code>, every line that belongs to that block must be indented. Python uses indentation to define where a block begins and ends — not curly braces like Java or C.</p>
+
+    <div class="code-compare">
+      <div class="pane correct">
+        <span class="pane-tag correct">Correct</span>
+        <pre><code><kw>if</kw> <kw>True</kw>:
+    <fn>print</fn>(<str>"This works"</str>)</code></pre>
+      </div>
+      <div class="pane wrong">
+        <span class="pane-tag wrong">Wrong — IndentationError</span>
+        <pre><code><kw>if</kw> <kw>True</kw>:
+<err-tok>print</err-tok>(<str>"Error!"</str>)</code></pre>
+      </div>
+    </div>
+
+    <div class="callout warn">
+      <strong>Python vs other languages</strong>
+      Languages like Java use curly braces <code>{ }</code>, so indentation there is optional style. In Python, indentation is mandatory — it is the only way Python knows which code belongs to which block.
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">05</span>
+      <h2>Using <code>else</code></h2>
+    </div>
+    <p>Use <code>else</code> to run a different block of code when the condition is false.</p>
+
+    <div class="code-block">
+      <span class="code-filename">example.py</span>
+      <pre><code><var>age</var> <op>=</op> <num>16</num>
+
+<kw>if</kw> <var>age</var> <op>&gt;</op> <num>18</num>:
+    <fn>print</fn>(<str>"Adult"</str>)
+<kw>else</kw>:
+    <fn>print</fn>(<str>"Not an adult"</str>)</code></pre>
+    </div>
+
+    <div class="output-block">
+      <div class="out-label">Output</div>
+      Not an adult
+    </div>
+
+    <div class="callout note">
+      <strong>Think about it — what if age is exactly 18?</strong>
+      The condition <code>age &gt; 18</code> is strictly greater than. So age 18 prints "Not an adult". If you want to include 18-year-olds as adults, use <code>age &gt;= 18</code> instead.
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">06</span>
+      <h2>Using <code>elif</code> — Multiple Conditions</h2>
+    </div>
+    <p>When you have more than two possible outcomes, use <code>elif</code> (short for <em>else if</em>) to chain conditions.</p>
+
+    <div class="code-block">
+      <span class="code-filename">grades.py</span>
+      <pre><code><var>marks</var> <op>=</op> <fn>int</fn>(<fn>input</fn>(<str>"Enter your marks: "</str>))
+
+<kw>if</kw> <var>marks</var> <op>&gt;=</op> <num>75</num>:
+    <fn>print</fn>(<str>"Distinction"</str>)
+<kw>elif</kw> <var>marks</var> <op>&gt;=</op> <num>50</num>:
+    <fn>print</fn>(<str>"Pass"</str>)
+<kw>else</kw>:
+    <fn>print</fn>(<str>"Fail"</str>)</code></pre>
+    </div>
+
+    <div class="steps">
+      <div class="step"><span class="step-n">1</span>The first condition is checked. If the user enters <code>80</code>, then <code>80 &gt;= 75</code> is True — it prints <strong>Distinction</strong> and stops.</div>
+      <div class="step"><span class="step-n">2</span>If the user enters <code>60</code>, the first condition is False. The second condition <code>60 &gt;= 50</code> is True — it prints <strong>Pass</strong>.</div>
+      <div class="step"><span class="step-n">3</span>If the user enters <code>30</code>, both conditions are False. The <code>else</code> block runs — it prints <strong>Fail</strong>.</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">07</span>
+      <h2>Comparing Strings</h2>
+    </div>
+    <p>You can compare text (strings) using <code>==</code> the same way you compare numbers.</p>
+
+    <div class="code-block">
+      <span class="code-filename">login.py</span>
+      <pre><code><var>password</var> <op>=</op> <fn>input</fn>(<str>"Enter the password: "</str>)
+
+<kw>if</kw> <var>password</var> <op>==</op> <str>"John123"</str>:
+    <fn>print</fn>(<str>"Logged in successfully"</str>)
+<kw>else</kw>:
+    <fn>print</fn>(<str>"Password incorrect"</str>)</code></pre>
+    </div>
+
+    <div class="callout caution">
+      <strong>Python is case-sensitive</strong>
+      <code>"John123"</code> and <code>"john123"</code> are completely different strings. Entering <code>john123</code> (lowercase j) will always print "Password incorrect".
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">08</span>
+      <h2>Combining Conditions — <code>and</code> &amp; <code>or</code></h2>
+    </div>
+
+    <p><strong><code>and</code></strong> — both conditions must be True for the block to run.</p>
+    <div class="code-block">
+      <pre><code><var>age</var> <op>=</op> <num>20</num>
+<var>has_id</var> <op>=</op> <kw>True</kw>
+
+<kw>if</kw> <var>age</var> <op>&gt;=</op> <num>18</num> <kw>and</kw> <var>has_id</var>:
+    <fn>print</fn>(<str>"Entry allowed"</str>)
+
+<cmt># Both requirements must be met</cmt></code></pre>
+    </div>
+
+    <p class="mt"><strong><code>or</code></strong> — at least one condition must be True.</p>
+    <div class="code-block">
+      <pre><code><kw>if</kw> <var>age</var> <op>&gt;=</op> <num>18</num> <kw>or</kw> <var>has_id</var>:
+    <fn>print</fn>(<str>"Entry allowed"</str>)
+
+<cmt># Either requirement is enough</cmt></code></pre>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">09</span>
+      <h2>Complete Example — Grade Calculator</h2>
+    </div>
+    <p>Let's build a program where the user enters marks and the program decides the grade. It should also print "Invalid marks" if the user enters a value above 100, since that is the maximum possible score.</p>
+
+    <div class="table-wrap">
+      <table class="grade-table">
+        <thead>
+          <tr><th>Grade</th><th>Mark range</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="grade-letter">A</td><td>75 – 100</td></tr>
+          <tr><td class="grade-letter">B</td><td>65 – 74</td></tr>
+          <tr><td class="grade-letter">C</td><td>50 – 64</td></tr>
+          <tr><td class="grade-letter">S</td><td>35 – 49</td></tr>
+          <tr><td class="grade-letter">F</td><td>0 – 34</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="code-block">
+      <span class="code-filename">grade_calc.py</span>
+      <pre><code><var>marks</var> <op>=</op> <fn>int</fn>(<fn>input</fn>(<str>"Enter your marks: "</str>))
+
+<kw>if</kw> <var>marks</var> <op>&gt;</op> <num>100</num>:
+    <fn>print</fn>(<str>"Invalid marks"</str>)
+<kw>elif</kw> <var>marks</var> <op>&gt;=</op> <num>75</num>:
+    <fn>print</fn>(<str>"A"</str>)
+<kw>elif</kw> <var>marks</var> <op>&gt;=</op> <num>65</num>:
+    <fn>print</fn>(<str>"B"</str>)
+<kw>elif</kw> <var>marks</var> <op>&gt;=</op> <num>50</num>:
+    <fn>print</fn>(<str>"C"</str>)
+<kw>elif</kw> <var>marks</var> <op>&gt;=</op> <num>35</num>:
+    <fn>print</fn>(<str>"S"</str>)
+<kw>else</kw>:
+    <fn>print</fn>(<str>"Fail"</str>)</code></pre>
+    </div>
+
+    <div class="callout tip">
+      <strong>Try it yourself</strong>
+      Run this program and enter different values — including numbers above 100. Observe which branch executes each time.
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">10</span>
+      <h2>Common Beginner Mistakes</h2>
+    </div>
+
+    <div class="mistake">
+      <div class="mistake-title">Using = instead of ==</div>
+      <div class="mistake-body">
+        <p>A single <code>=</code> is assignment. A double <code>==</code> is comparison.</p>
+        <div class="code-compare">
+          <div class="pane wrong">
+            <span class="pane-tag wrong">Wrong</span>
+            <pre><code><kw>if</kw> <var>x</var> <err-tok>=</err-tok> <num>5</num>:   <cmt># SyntaxError</cmt></code></pre>
+          </div>
+          <div class="pane correct">
+            <span class="pane-tag correct">Correct</span>
+            <pre><code><kw>if</kw> <var>x</var> <op>==</op> <num>5</num>:</code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mistake">
+      <div class="mistake-title">Forgetting indentation</div>
+      <div class="mistake-body">
+        <div class="code-compare">
+          <div class="pane wrong">
+            <span class="pane-tag wrong">Wrong</span>
+            <pre><code><kw>if</kw> <var>x</var> <op>&gt;</op> <num>5</num>:
+<err-tok>print</err-tok>(<str>"Hello"</str>)  <cmt># IndentationError</cmt></code></pre>
+          </div>
+          <div class="pane correct">
+            <span class="pane-tag correct">Correct</span>
+            <pre><code><kw>if</kw> <var>x</var> <op>&gt;</op> <num>5</num>:
+    <fn>print</fn>(<str>"Hello"</str>)</code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mistake">
+      <div class="mistake-title">Comparing input without converting to int</div>
+      <div class="mistake-body">
+        <p><code>input()</code> always returns a string. You cannot compare a string with a number — you must convert it first using <code>int()</code>.</p>
+        <div class="code-compare">
+          <div class="pane wrong">
+            <span class="pane-tag wrong">Wrong</span>
+            <pre><code><var>age</var> <op>=</op> <fn>input</fn>(<str>"Enter age: "</str>)
+<kw>if</kw> <var>age</var> <op>&gt;</op> <num>18</num>:  <cmt># TypeError</cmt></code></pre>
+          </div>
+          <div class="pane correct">
+            <span class="pane-tag correct">Correct</span>
+            <pre><code><var>age</var> <op>=</op> <fn>int</fn>(<fn>input</fn>(<str>"Enter age: "</str>))
+<kw>if</kw> <var>age</var> <op>&gt;</op> <num>18</num>:</code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="summary">
+    <h2>Lesson Summary</h2>
+    <ul>
+      <li>Use <code>if</code>, <code>else</code>, and <code>elif</code> to make decisions in your programs</li>
+      <li>Compare values using six comparison operators: <code>==</code>, <code>!=</code>, <code>&gt;</code>, <code>&lt;</code>, <code>&gt;=</code>, <code>&lt;=</code></li>
+      <li>Indentation is mandatory in Python — it defines which code belongs to which block</li>
+      <li>Strings are case-sensitive when compared with <code>==</code></li>
+      <li>Combine conditions with <code>and</code> (both must be True) and <code>or</code> (at least one must be True)</li>
+    </ul>
+  </div>
+
+  <div class="next-lesson">
+    <div>
+      <div class="nl-label">Next lesson</div>
+      <div class="nl-title">Project Discussion — Conditional Exercises</div>
+    </div>
+    <a class="next-link" href="lesson-12.html">Continue →</a>
+  </div>
+
+</div>
+</body>
+</html>
