@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Setting Up Python — Lesson 7</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="lesson-styles.css"/>
+</head>
+<body>
+<div class="page">
+
+  <div class="topbar">
+    <span class="topbar-course">Python Programming</span>
+    <span class="topbar-lesson">Lesson 7 of 20</span>
+  </div>
+
+  <div class="page-header">
+    <div class="label">Lesson 7</div>
+    <h1>Setting Up Python: Installation and Development Environment</h1>
+    <p class="intro">
+      Before writing real Python programs, you need to set up Python on your computer. This lesson walks you through installing Python, running your first program, and setting up Visual Studio Code as your IDE.
+    </p>
+  </div>
+
+  <div class="objectives">
+    <h2>By the end of this lesson you will be able to</h2>
+    <ul>
+      <li>Install Python on your computer (Windows or macOS)</li>
+      <li>Verify that Python is installed correctly</li>
+      <li>Set up Visual Studio Code for Python programming</li>
+      <li>Run a basic Python script successfully</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">01</span>
+      <h2>Installing Python on Windows</h2>
+    </div>
+    <p>As of 2026, the latest stable Python version is from the Python 3.x series (around 3.13+).</p>
+
+    <div class="steps">
+      <div class="step"><span class="step-n">1</span><div><strong>Download Python</strong> — Go to the official website: <code>https://www.python.org</code> and click <em>Download Python</em> (latest version).</div></div>
+      <div class="step"><span class="step-n">2</span><div><strong>Run the Installer</strong> — Open the downloaded <code>.exe</code> file. <strong>IMPORTANT:</strong> Tick the checkbox "Add Python to PATH" before clicking Install Now.</div></div>
+      <div class="step"><span class="step-n">3</span><div><strong>Verify Installation</strong> — Open Command Prompt and type:</div></div>
+    </div>
+
+    <div class="code-block">
+      <pre><code>python --version</code></pre>
+    </div>
+    <div class="output-block">
+      <div class="out-label">Output</div>
+      Python 3.13.x
+    </div>
+
+    <div class="callout caution">
+      <strong>Don't skip "Add Python to PATH"</strong>
+      If you forget to tick "Add Python to PATH", your computer won't be able to find Python when you type commands in the terminal.
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">02</span>
+      <h2>Installing Python on macOS</h2>
+    </div>
+    <p>Most Macs already have Python installed, but usually an older version. Install the latest one.</p>
+
+    <div class="steps">
+      <div class="step"><span class="step-n">1</span><div><strong>Download Python</strong> — Go to <code>https://www.python.org</code> and download the macOS installer (.pkg file).</div></div>
+      <div class="step"><span class="step-n">2</span><div><strong>Install Python</strong> — Open the downloaded .pkg file and follow the installation steps.</div></div>
+      <div class="step"><span class="step-n">3</span><div><strong>Verify Installation</strong> — Open Terminal and type <code>python3 --version</code>. You should see the installed version.</div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">03</span>
+      <h2>Running Your First Program (Without an IDE)</h2>
+    </div>
+    <p>Before using advanced tools, it's important to understand how Python works with a simple text editor.</p>
+
+    <div class="steps">
+      <div class="step"><span class="step-n">1</span> Open Notepad (Windows) or TextEdit (Mac)</div>
+      <div class="step"><span class="step-n">2</span><div>Write the following code:
+        <div class="code-block mt-sm"><pre><code><fn>print</fn>(<str>"Hello, World!"</str>)</code></pre></div>
+      </div></div>
+      <div class="step"><span class="step-n">3</span><div>Save the file as <code>hello.py</code>. Make sure the file type is set to "All Files" and the extension is <code>.py</code>.</div></div>
+      <div class="step"><span class="step-n">4</span><div>On Windows: Open Command Prompt, navigate to the file location with <code>cd Desktop</code>, then run <code>python hello.py</code>.<br>On macOS: Open Terminal, navigate to the file location, then run <code>python3 hello.py</code>.</div></div>
+    </div>
+
+    <div class="output-block">
+      <div class="out-label">Output</div>
+      Hello, World!
+    </div>
+    <p>Congratulations! You just ran your first Python program.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">04</span>
+      <h2>Why Do We Need an IDE?</h2>
+    </div>
+    <p>Writing code in Notepad works, but it is not practical for real development. An IDE (Integrated Development Environment) provides:</p>
+    <ul>
+      <li>Syntax highlighting — different colors for different code elements</li>
+      <li>Error detection — underlines mistakes before you run the code</li>
+      <li>Auto-completion — suggests code as you type</li>
+      <li>Easy execution — run your code with one click or keyboard shortcut</li>
+    </ul>
+    <p>You don't get any of these facilities with Notepad or ordinary text editors.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">05</span>
+      <h2>Installing Visual Studio Code (VS Code)</h2>
+    </div>
+    <p>VS Code is one of the most popular and beginner-friendly IDEs.</p>
+
+    <div class="steps">
+      <div class="step"><span class="step-n">1</span><div><strong>Download VS Code</strong> — Go to <code>https://code.visualstudio.com</code> and download the version for your operating system.</div></div>
+      <div class="step"><span class="step-n">2</span><div><strong>Install VS Code</strong> — Run the installer and follow the steps.</div></div>
+      <div class="step"><span class="step-n">3</span><div><strong>Install the Python Extension</strong> — Open VS Code, go to the Extensions panel (left sidebar), search for "Python", and install the extension by Microsoft.</div></div>
+      <div class="step"><span class="step-n">4</span><div><strong>Open a folder</strong> — Create a folder for your Python projects, then open it in VS Code with File > Open Folder.</div></div>
+      <div class="step"><span class="step-n">5</span><div><strong>Create and run a file</strong> — Create a new file called <code>hello.py</code>, write <code>print("Hello, World!")</code>, and press the Run button (or press <code>F5</code>).</div></div>
+    </div>
+
+    <div class="callout tip">
+      <strong>Recommended workflow</strong>
+      Always keep one folder for your Python course files. Name your files clearly (e.g. <code>lesson08_input.py</code>) so you can find them later.
+    </div>
+  </div>
+
+  <div class="summary">
+    <h2>Lesson Summary</h2>
+    <ul>
+      <li>Python is downloaded from <code>python.org</code> — always tick "Add Python to PATH" on Windows</li>
+      <li>Verify installation by typing <code>python --version</code> in the terminal</li>
+      <li>Python files have the <code>.py</code> extension and are run from the terminal or an IDE</li>
+      <li>VS Code is a free, beginner-friendly IDE that adds syntax highlighting, error detection, and auto-completion</li>
+    </ul>
+  </div>
+
+  <div class="next-lesson">
+    <div>
+      <div class="nl-label">Next lesson</div>
+      <div class="nl-title">From Hello World to User Input</div>
+    </div>
+    <a class="next-link" href="lesson-08.html">Continue →</a>
+  </div>
+
+</div>
+</body>
+</html>

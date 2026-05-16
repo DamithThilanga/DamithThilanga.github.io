@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Repetitive Tasks with Loops — Lesson 14</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="lesson-styles.css"/>
+</head>
+<body>
+<div class="page">
+
+  <div class="topbar">
+    <span class="topbar-course">Python Programming</span>
+    <span class="topbar-lesson">Lesson 14 of 20</span>
+  </div>
+
+  <div class="page-header">
+    <div class="label">Lesson 14</div>
+    <h1>Repetitive Tasks with Loops</h1>
+    <p class="intro">
+      In programming, we often need to repeat a task multiple times. Writing the same code repeatedly is inefficient. Loops allow us to execute a block of code multiple times automatically.
+    </p>
+  </div>
+
+  <div class="objectives">
+    <h2>By the end of this lesson you will be able to</h2>
+    <ul>
+      <li>Use <code>for</code> loops to iterate over sequences</li>
+      <li>Use <code>while</code> loops to repeat based on a condition</li>
+      <li>Use <code>range()</code> to generate number sequences</li>
+      <li>Control loop execution with <code>break</code> and <code>continue</code></li>
+      <li>Combine loops with conditionals and data structures</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">01</span>
+      <h2>Why We Need Loops</h2>
+    </div>
+    <p>Without loops, printing numbers 1 to 5 looks like this:</p>
+    <div class="code-block">
+      <pre><code><fn>print</fn>(<num>1</num>)
+<fn>print</fn>(<num>2</num>)
+<fn>print</fn>(<num>3</num>)
+<fn>print</fn>(<num>4</num>)
+<fn>print</fn>(<num>5</num>)</code></pre>
+    </div>
+    <p>With a loop, the same result needs just two lines:</p>
+    <div class="code-block">
+      <pre><code><kw>for</kw> <var>i</var> <kw>in</kw> <fn>range</fn>(<num>1</num>, <num>6</num>):
+    <fn>print</fn>(<var>i</var>)</code></pre>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">02</span>
+      <h2>The for Loop</h2>
+    </div>
+    <p>The <code>for</code> loop runs once for each item in a sequence and stops when the items are over.</p>
+    <div class="code-block">
+      <span class="code-filename">syntax</span>
+      <pre><code><kw>for</kw> <var>variable</var> <kw>in</kw> sequence:
+    <cmt># code block</cmt></code></pre>
+    </div>
+
+    <p><strong>Loop through a list:</strong></p>
+    <div class="code-block">
+      <pre><code><var>numbers</var> <op>=</op> [<num>10</num>, <num>20</num>, <num>30</num>]
+<kw>for</kw> <var>num</var> <kw>in</kw> <var>numbers</var>:
+    <fn>print</fn>(<var>num</var>)</code></pre>
+    </div>
+    <div class="output-block">
+      <div class="out-label">Output</div>
+      10<br>20<br>30
+    </div>
+
+    <p><strong>Loop through a string:</strong></p>
+    <div class="code-block">
+      <pre><code><var>text</var> <op>=</op> <str>"Hello"</str>
+<kw>for</kw> <var>ch</var> <kw>in</kw> <var>text</var>:
+    <fn>print</fn>(<var>ch</var>)</code></pre>
+    </div>
+    <p>Each letter in the word is printed on a separate line.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">03</span>
+      <h2>Using range()</h2>
+    </div>
+    <p>The <code>range()</code> function generates a sequence of numbers.</p>
+
+    <p><strong>range(stop)</strong> — starts from 0, stops before the given number.</p>
+    <div class="code-block">
+      <pre><code><kw>for</kw> <var>i</var> <kw>in</kw> <fn>range</fn>(<num>5</num>):
+    <fn>print</fn>(<var>i</var>)</code></pre>
+    </div>
+    <div class="output-block">
+      <div class="out-label">Output</div>
+      0 1 2 3 4
+    </div>
+    <div class="callout warn">
+      <strong>range() does not include the stop value</strong>
+      <code>range(5)</code> gives 0, 1, 2, 3, 4 — not 5. If you want to iterate from 5 to 10, write <code>range(5, 11)</code>.
+    </div>
+
+    <p><strong>range(start, stop)</strong></p>
+    <div class="code-block">
+      <pre><code><kw>for</kw> <var>i</var> <kw>in</kw> <fn>range</fn>(<num>1</num>, <num>6</num>):
+    <fn>print</fn>(<var>i</var>)</code></pre>
+    </div>
+    <div class="output-block">
+      <div class="out-label">Output</div>
+      1 2 3 4 5
+    </div>
+
+    <p><strong>range(start, stop, step)</strong> — step decides how many numbers to skip.</p>
+    <div class="code-block">
+      <pre><code><kw>for</kw> <var>i</var> <kw>in</kw> <fn>range</fn>(<num>1</num>, <num>10</num>, <num>2</num>):
+    <fn>print</fn>(<var>i</var>)</code></pre>
+    </div>
+    <div class="output-block">
+      <div class="out-label">Output</div>
+      1 3 5 7 9
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">04</span>
+      <h2>The while Loop</h2>
+    </div>
+    <p>The <code>while</code> loop continues as long as its condition is True.</p>
+    <div class="code-block">
+      <span class="code-filename">syntax</span>
+      <pre><code><kw>while</kw> condition:
+    <cmt># code block</cmt></code></pre>
+    </div>
+
+    <div class="code-block">
+      <span class="code-filename">example.py</span>
+      <pre><code><var>x</var> <op>=</op> <num>1</num>
+<kw>while</kw> <var>x</var> <op>&lt;=</op> <num>5</num>:
+    <fn>print</fn>(<var>x</var>)
+    <var>x</var> <op>=</op> <var>x</var> <op>+</op> <num>1</num></code></pre>
+    </div>
+    <div class="output-block">
+      <div class="out-label">Output</div>
+      1 2 3 4 5
+    </div>
+
+    <div class="steps">
+      <div class="step"><span class="step-n">1</span> x starts as 1. Condition <code>x &lt;= 5</code> is True, so print x.</div>
+      <div class="step"><span class="step-n">2</span> x becomes 2. Condition is still True. Print x.</div>
+      <div class="step"><span class="step-n">3</span> This continues until x = 5, which is printed.</div>
+      <div class="step"><span class="step-n">4</span> x becomes 6. Condition <code>6 &lt;= 5</code> is False. Loop stops.</div>
+    </div>
+
+    <div class="mistake">
+      <div class="mistake-title">Infinite loop — forgetting to update the variable</div>
+      <div class="mistake-body">
+        <div class="code-compare">
+          <div class="pane wrong">
+            <span class="pane-tag wrong">Wrong — infinite loop!</span>
+            <pre><code><var>x</var> <op>=</op> <num>1</num>
+<kw>while</kw> <var>x</var> <op>&lt;=</op> <num>5</num>:
+    <fn>print</fn>(<var>x</var>)
+<cmt># x is never updated — loop runs forever</cmt></code></pre>
+          </div>
+          <div class="pane correct">
+            <span class="pane-tag correct">Correct</span>
+            <pre><code><var>x</var> <op>=</op> <num>1</num>
+<kw>while</kw> <var>x</var> <op>&lt;=</op> <num>5</num>:
+    <fn>print</fn>(<var>x</var>)
+    <var>x</var> <op>=</op> <var>x</var> <op>+</op> <num>1</num></code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">05</span>
+      <h2>Loop Control: break and continue</h2>
+    </div>
+
+    <p><strong><code>break</code></strong> — Stops the loop completely.</p>
+    <div class="code-block">
+      <pre><code><kw>for</kw> <var>i</var> <kw>in</kw> <fn>range</fn>(<num>1</num>, <num>6</num>):
+    <kw>if</kw> <var>i</var> <op>==</op> <num>3</num>:
+        <kw>break</kw>
+    <fn>print</fn>(<var>i</var>)</code></pre>
+    </div>
+    <div class="output-block">
+      <div class="out-label">Output</div>
+      1<br>2
+    </div>
+    <p>Although the loop is set to run from 1 to 5, the <code>break</code> stops it when <code>i</code> reaches 3.</p>
+
+    <p class="mt"><strong><code>continue</code></strong> — Skips the current iteration and moves to the next one.</p>
+    <div class="code-block">
+      <pre><code><kw>for</kw> <var>i</var> <kw>in</kw> <fn>range</fn>(<num>1</num>, <num>6</num>):
+    <kw>if</kw> <var>i</var> <op>==</op> <num>3</num>:
+        <kw>continue</kw>
+    <fn>print</fn>(<var>i</var>)</code></pre>
+    </div>
+    <div class="output-block">
+      <div class="out-label">Output</div>
+      1<br>2<br>4<br>5
+    </div>
+    <p>The number 3 is skipped but the loop continues for all other values.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">06</span>
+      <h2>Loops with Data Structures</h2>
+    </div>
+
+    <p><strong>Looping through a list:</strong></p>
+    <div class="code-block">
+      <pre><code><var>marks</var> <op>=</op> [<num>60</num>, <num>70</num>, <num>80</num>]
+<kw>for</kw> <var>mark</var> <kw>in</kw> <var>marks</var>:
+    <fn>print</fn>(<var>mark</var>)</code></pre>
+    </div>
+
+    <p><strong>Looping through a dictionary:</strong></p>
+    <div class="code-block">
+      <pre><code><var>student</var> <op>=</op> {<str>"name"</str>: <str>"John"</str>, <str>"age"</str>: <num>20</num>}
+<kw>for</kw> <var>key</var> <kw>in</kw> <var>student</var>:
+    <fn>print</fn>(<var>key</var>, <var>student</var>[<var>key</var>])</code></pre>
+    </div>
+    <div class="output-block">
+      <div class="out-label">Output</div>
+      name John<br>age 20
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">07</span>
+      <h2>Combining Loops and Conditionals</h2>
+    </div>
+    <div class="code-block">
+      <span class="code-filename">even_odd.py</span>
+      <pre><code><var>numbers</var> <op>=</op> [<num>10</num>, <num>15</num>, <num>20</num>, <num>25</num>]
+<kw>for</kw> <var>num</var> <kw>in</kw> <var>numbers</var>:
+    <kw>if</kw> <var>num</var> <op>%</op> <num>2</num> <op>==</op> <num>0</num>:
+        <fn>print</fn>(<var>num</var>, <str>"is even"</str>)
+    <kw>else</kw>:
+        <fn>print</fn>(<var>num</var>, <str>"is odd"</str>)</code></pre>
+    </div>
+    <div class="output-block">
+      <div class="out-label">Output</div>
+      10 is even<br>15 is odd<br>20 is even<br>25 is odd
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">08</span>
+      <h2>Common Beginner Mistakes</h2>
+    </div>
+    <ul>
+      <li>Forgetting to update variables in <code>while</code> loops (causes infinite loops)</li>
+      <li>Incorrect indentation inside loops</li>
+      <li>Confusing <code>range()</code> stop value — it is exclusive (not included)</li>
+      <li>Trying to index sets (not allowed — sets are unordered)</li>
+      <li>Modifying a list incorrectly inside a loop</li>
+    </ul>
+  </div>
+
+  <div class="summary">
+    <h2>Lesson Summary</h2>
+    <ul>
+      <li>Loops allow repeating code efficiently instead of writing the same lines multiple times</li>
+      <li><code>for</code> loops iterate over sequences (lists, strings, <code>range()</code>)</li>
+      <li><code>while</code> loops run as long as a condition remains True</li>
+      <li><code>break</code> stops a loop completely; <code>continue</code> skips the current iteration</li>
+      <li><code>range(start, stop, step)</code> generates number sequences — stop value is not included</li>
+      <li>Loops can be combined with conditionals and data structures for powerful programs</li>
+    </ul>
+  </div>
+
+  <div class="next-lesson">
+    <div>
+      <div class="nl-label">Next lesson</div>
+      <div class="nl-title">Project Discussion — Data Structures and Loops</div>
+    </div>
+    <a class="next-link" href="lesson-15.html">Continue →</a>
+  </div>
+
+</div>
+</body>
+</html>

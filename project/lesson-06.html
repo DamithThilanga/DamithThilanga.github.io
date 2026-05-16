@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Naming Variables in Python — Lesson 6</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="lesson-styles.css"/>
+</head>
+<body>
+<div class="page">
+
+  <div class="topbar">
+    <span class="topbar-course">Python Programming</span>
+    <span class="topbar-lesson">Lesson 6 of 20</span>
+  </div>
+
+  <div class="page-header">
+    <div class="label">Lesson 6</div>
+    <h1>Naming Variables in Python: Writing Clean and Meaningful Code</h1>
+    <p class="intro">
+      At first glance, naming variables sounds like a small detail. In reality, it makes a huge difference in how easy your code is to read, understand, and maintain.
+    </p>
+  </div>
+
+  <div class="objectives">
+    <h2>By the end of this lesson you will be able to</h2>
+    <ul>
+      <li>Apply Python variable naming rules correctly</li>
+      <li>Distinguish between valid and invalid variable names with reasons</li>
+      <li>Use meaningful variable names to improve code readability</li>
+      <li>Follow basic variable naming conventions in Python to write professional code</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">01</span>
+      <h2>Why Is Variable Naming Important?</h2>
+    </div>
+    <p>Imagine reading this:</p>
+    <div class="code-block">
+      <pre><code><var>x</var> <op>=</op> <num>25</num>
+<var>y</var> <op>=</op> <num>10</num>
+<var>z</var> <op>=</op> <var>x</var> <op>*</op> <var>y</var></code></pre>
+    </div>
+    <p>Now compare it with this:</p>
+    <div class="code-block">
+      <pre><code><var>length</var> <op>=</op> <num>25</num>
+<var>width</var> <op>=</op> <num>10</num>
+<var>area</var> <op>=</op> <var>length</var> <op>*</op> <var>width</var></code></pre>
+    </div>
+    <p>Both programs do the same thing. But the second one is much easier to understand. Good variable names make your code readable, help others understand your logic, reduce mistakes, and make debugging easier.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">02</span>
+      <h2>Basic Rules for Naming Variables</h2>
+    </div>
+    <p>These are the mandatory rules — your program will not work properly if you break them.</p>
+
+    <p><strong>Rule 1:</strong> Variable names can only contain letters (a–z, A–Z), numbers (0–9), and underscores (_). Other special characters are not allowed.</p>
+    <div class="code-block">
+      <pre><code><var>student_name</var> <op>=</op> <str>"John"</str>    <cmt># valid</cmt>
+<var>marks1</var> <op>=</op> <num>85</num>              <cmt># valid</cmt></code></pre>
+    </div>
+
+    <p><strong>Rule 2:</strong> Variable names cannot start with a number.</p>
+    <div class="code-compare">
+      <div class="pane wrong">
+        <span class="pane-tag wrong">Wrong</span>
+        <pre><code><err-tok>1name</err-tok> <op>=</op> <str>"John"</str>    <cmt># SyntaxError</cmt></code></pre>
+      </div>
+      <div class="pane correct">
+        <span class="pane-tag correct">Correct</span>
+        <pre><code><var>name1</var> <op>=</op> <str>"John"</str></code></pre>
+      </div>
+    </div>
+
+    <p><strong>Rule 3:</strong> Variable names cannot be Python keywords. Keywords are reserved words with special meanings in Python.</p>
+    <div class="code-block">
+      <pre><code><cmt># These are invalid variable names:</cmt>
+<cmt># if, else, elif, while, for, def, return, True, False, None</cmt></code></pre>
+    </div>
+
+    <p><strong>Rule 4:</strong> Python variable names are case-sensitive. <code>Name</code>, <code>name</code>, and <code>NAME</code> are three completely different variables.</p>
+    <div class="code-block">
+      <pre><code><var>name</var> <op>=</op> <str>"John"</str>
+<var>Name</var> <op>=</op> <str>"Mary"</str>
+<cmt># These are two different variables</cmt></code></pre>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">03</span>
+      <h2>Naming Conventions</h2>
+    </div>
+    <p>Beyond the mandatory rules, Python has widely accepted conventions for naming variables. These are not enforced by Python itself, but following them makes your code professional and readable.</p>
+
+    <p><strong>Use snake_case</strong> — separate words with underscores, all lowercase. This is the Python standard.</p>
+    <div class="code-compare">
+      <div class="pane correct">
+        <span class="pane-tag correct">Python Convention</span>
+        <pre><code><var>student_name</var> <op>=</op> <str>"John"</str>
+<var>total_marks</var> <op>=</op> <num>450</num>
+<var>is_passed</var> <op>=</op> <kw>True</kw></code></pre>
+      </div>
+      <div class="pane wrong">
+        <span class="pane-tag wrong">Avoid</span>
+        <pre><code><var>studentName</var> <op>=</op> <str>"John"</str>  <cmt># camelCase</cmt>
+<var>TotalMarks</var> <op>=</op> <num>450</num>   <cmt># PascalCase</cmt></code></pre>
+      </div>
+    </div>
+
+    <p><strong>Use meaningful names</strong> — the name should clearly describe what the variable stores.</p>
+    <div class="code-block">
+      <span class="code-filename">meaningful.py</span>
+      <pre><code><cmt># Bad — unclear purpose</cmt>
+<var>a</var> <op>=</op> <num>5</num>
+<var>b</var> <op>=</op> <num>3</num>
+
+<cmt># Good — purpose is immediately clear</cmt>
+<var>number_of_students</var> <op>=</op> <num>5</num>
+<var>passing_marks</var> <op>=</op> <num>3</num></code></pre>
+    </div>
+
+    <p><strong>Use boolean prefixes for boolean variables</strong> — prefix with <code>is_</code>, <code>has_</code>, or <code>can_</code>.</p>
+    <div class="code-block">
+      <pre><code><var>is_active</var> <op>=</op> <kw>True</kw>
+<var>has_passed</var> <op>=</op> <kw>False</kw>
+<var>can_vote</var> <op>=</op> <kw>True</kw></code></pre>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">04</span>
+      <h2>Common Beginner Mistakes</h2>
+    </div>
+
+    <div class="mistake">
+      <div class="mistake-title">Using spaces in variable names</div>
+      <div class="mistake-body">
+        <div class="code-compare">
+          <div class="pane wrong">
+            <span class="pane-tag wrong">Wrong</span>
+            <pre><code><err-tok>student name</err-tok> <op>=</op> <str>"John"</str>  <cmt># SyntaxError</cmt></code></pre>
+          </div>
+          <div class="pane correct">
+            <span class="pane-tag correct">Correct</span>
+            <pre><code><var>student_name</var> <op>=</op> <str>"John"</str></code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mistake">
+      <div class="mistake-title">Using Python keywords as variable names</div>
+      <div class="mistake-body">
+        <div class="code-compare">
+          <div class="pane wrong">
+            <span class="pane-tag wrong">Wrong</span>
+            <pre><code><err-tok>if</err-tok> <op>=</op> <num>10</num>       <cmt># SyntaxError</cmt>
+<err-tok>print</err-tok> <op>=</op> <num>5</num>    <cmt># overwrites built-in</cmt></code></pre>
+          </div>
+          <div class="pane correct">
+            <span class="pane-tag correct">Correct</span>
+            <pre><code><var>condition</var> <op>=</op> <num>10</num>
+<var>value</var> <op>=</op> <num>5</num></code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="summary">
+    <h2>Lesson Summary</h2>
+    <ul>
+      <li>Variable names can only contain letters, digits, and underscores — no spaces or special characters</li>
+      <li>Variable names cannot start with a number</li>
+      <li>Variable names cannot be Python keywords like <code>if</code>, <code>else</code>, or <code>True</code></li>
+      <li>Python variable names are case-sensitive</li>
+      <li>Use snake_case (e.g. <code>student_name</code>) as the Python naming convention</li>
+      <li>Choose meaningful names that clearly describe what the variable stores</li>
+    </ul>
+  </div>
+
+  <div class="next-lesson">
+    <div>
+      <div class="nl-label">Next lesson</div>
+      <div class="nl-title">Setting Up Python: Installation and Development Environment</div>
+    </div>
+    <a class="next-link" href="lesson-07.html">Continue →</a>
+  </div>
+
+</div>
+</body>
+</html>

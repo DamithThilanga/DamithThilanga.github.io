@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Variables, Data Types, and Algorithms — Lesson 5</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="lesson-styles.css"/>
+</head>
+<body>
+<div class="page">
+
+  <div class="topbar">
+    <span class="topbar-course">Python Programming</span>
+    <span class="topbar-lesson">Lesson 5 of 20</span>
+  </div>
+
+  <div class="page-header">
+    <div class="label">Lesson 5</div>
+    <h1>Variables, Data Types, and Algorithms</h1>
+    <p class="intro">
+      No matter how simple or complex a program is, it always depends on three fundamental ideas: variables, data types, and algorithms. If you understand these clearly, everything else in programming becomes much easier.
+    </p>
+  </div>
+
+  <div class="objectives">
+    <h2>By the end of this lesson you will be able to</h2>
+    <ul>
+      <li>Explain what a variable is and how it stores data in a program</li>
+      <li>Identify and use the four basic Python data types: int, float, str, and bool</li>
+      <li>Convert between data types using type conversion functions</li>
+      <li>Define what an algorithm is and explain its role in programming</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">01</span>
+      <h2>Variables</h2>
+    </div>
+    <p>A variable is a name used to store a value in a program. Think of it like a labeled container — you can put values into it, remove values, and change the values. Instead of asking the program to remember values directly, you give them names (labels) so you can use those names throughout the program.</p>
+
+    <div class="code-block">
+      <span class="code-filename">example.py</span>
+      <pre><code><var>marks</var> <op>=</op> <num>75</num></code></pre>
+    </div>
+
+    <p>Here, <code>marks</code> is the variable name and <code>75</code> is the value stored in it. Later in the program, you can use <code>marks</code> instead of writing <code>75</code> again and again. If you want to change the marks to 85, simply write <code>marks = 85</code> — one change affects everywhere it is used.</p>
+
+    <p>Variables make programs:</p>
+    <ul>
+      <li>Easier to read</li>
+      <li>Easier to update</li>
+      <li>More flexible</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">02</span>
+      <h2>Data Types</h2>
+    </div>
+    <p>A data type tells the computer what kind of value a variable is storing. This is important because different types of data are handled in different ways.</p>
+
+    <p><strong>1. Integer (<code>int</code>)</strong> — Whole numbers without decimal points.</p>
+    <div class="code-block">
+      <pre><code><var>age</var> <op>=</op> <num>30</num>
+<var>marks</var> <op>=</op> <num>80</num>
+<var>total</var> <op>=</op> <num>10</num> <op>+</op> <num>15</num></code></pre>
+    </div>
+
+    <p><strong>2. Float (<code>float</code>)</strong> — Numbers with decimal points, used when precision is needed.</p>
+    <div class="code-block">
+      <pre><code><var>price</var> <op>=</op> <num>99.99</num>
+<var>temperature</var> <op>=</op> <num>36.5</num>
+<var>bmi</var> <op>=</op> <num>67.5</num> <op>/</op> (<num>1.8</num> <op>*</op> <num>1.8</num>)</code></pre>
+    </div>
+
+    <p><strong>3. String (<code>str</code>)</strong> — Text values, which must be inside quotes. Python allows both single and double quotes.</p>
+    <div class="code-block">
+      <pre><code><var>name</var> <op>=</op> <str>"John"</str>
+<var>city</var> <op>=</op> <str>'Colombo'</str>
+<var>message</var> <op>=</op> <str>"Hello World"</str>
+<var>grade</var> <op>=</op> <str>"A"</str>
+<var>full_name</var> <op>=</op> <str>"John "</str> <op>+</op> <str>"Perera"</str>  <cmt># concatenation</cmt></code></pre>
+    </div>
+
+    <p><strong>4. Boolean (<code>bool</code>)</strong> — Represents only two values: <code>True</code> or <code>False</code> (and also <code>None</code>, which indicates no value has been stored).</p>
+    <div class="code-block">
+      <pre><code><var>is_passed</var> <op>=</op> <kw>True</kw>
+<var>availability</var> <op>=</op> <kw>False</kw>
+<var>is_logged_in</var> <op>=</op> <kw>True</kw></code></pre>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">03</span>
+      <h2>Why Are Data Types Important?</h2>
+    </div>
+    <p>Data types help the computer to store data correctly, perform correct operations, and avoid errors. For example:</p>
+    <ul>
+      <li>You can add numbers: <code>5 + 3</code></li>
+      <li>But adding text and numbers directly causes an error: <code>"5" + 3</code> — because <code>"5"</code> is a string, not an integer</li>
+    </ul>
+    <p>You can check the data type of any variable using Python's built-in <code>type()</code> function:</p>
+    <div class="code-block">
+      <span class="code-filename">example.py</span>
+      <pre><code><var>age</var> <op>=</op> <num>25</num>
+<fn>print</fn>(<fn>type</fn>(<var>age</var>))</code></pre>
+    </div>
+    <div class="output-block">
+      <div class="out-label">Output</div>
+      &lt;class 'int'&gt;
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">04</span>
+      <h2>Type Conversion (Type Casting)</h2>
+    </div>
+    <p>Sometimes you need to convert one data type into another. Python provides built-in functions for this.</p>
+
+    <div class="code-block">
+      <span class="code-filename">type_conversion.py</span>
+      <pre><code><cmt># Converting to Integer</cmt>
+<var>num</var> <op>=</op> <fn>int</fn>(<str>"10"</str>)
+<fn>print</fn>(<var>num</var>)          <cmt># 10</cmt>
+
+<cmt># Converting to Float</cmt>
+<var>value</var> <op>=</op> <fn>float</fn>(<num>5</num>)
+<fn>print</fn>(<var>value</var>)        <cmt># 5.0</cmt>
+
+<cmt># Converting to String</cmt>
+<var>age</var> <op>=</op> <num>25</num>
+<var>text</var> <op>=</op> <fn>str</fn>(<var>age</var>)
+<fn>print</fn>(<var>text</var>)         <cmt># "25"</cmt>
+
+<cmt># Converting to Boolean</cmt>
+<fn>print</fn>(<fn>bool</fn>(<num>1</num>))    <cmt># True</cmt>
+<fn>print</fn>(<fn>bool</fn>(<num>0</num>))    <cmt># False</cmt></code></pre>
+    </div>
+
+    <div class="callout caution">
+      <strong>Caution with int() conversion</strong>
+      The string you are converting must actually be convertable to an integer. <code>int("Hello")</code> will raise an error because "Hello" is not a number.
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">05</span>
+      <h2>Algorithms</h2>
+    </div>
+    <p>An algorithm is a step-by-step procedure to solve a problem. Before writing a program, it is always a good idea to think: "What steps should the computer follow to solve this problem?" That sequence of steps is the algorithm.</p>
+
+    <p>Example algorithm — Find the sum of two numbers:</p>
+    <div class="steps">
+      <div class="step"><span class="step-n">1</span> Start</div>
+      <div class="step"><span class="step-n">2</span> Input the first number</div>
+      <div class="step"><span class="step-n">3</span> Input the second number</div>
+      <div class="step"><span class="step-n">4</span> Add the two numbers</div>
+      <div class="step"><span class="step-n">5</span> Display the result</div>
+      <div class="step"><span class="step-n">6</span> End</div>
+    </div>
+
+    <p class="mt">Only after defining these steps do we write the actual Python code. Algorithms help you think clearly before coding, break down complex problems, and avoid confusion and errors.</p>
+    <div class="callout note">
+      <strong>Good programmers plan first</strong>
+      Good programmers don't jump straight into coding — they first plan the solution with a clear algorithm.
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">06</span>
+      <h2>How Variables, Data Types, and Algorithms Work Together</h2>
+    </div>
+    <p>These three concepts connect in every program:</p>
+    <ul>
+      <li><strong>Variables</strong> — "What information do I have?"</li>
+      <li><strong>Data types</strong> — "What kind of information is it?"</li>
+      <li><strong>Algorithms</strong> — "What should I do with it?"</li>
+    </ul>
+    <div class="callout note">
+      <strong>Also worth knowing</strong>
+      The data types discussed here (int, float, str, bool) store only a single value each. Python also has data types that store collections of data — like lists, sets, tuples, and dictionaries. These are covered in Lesson 13.
+    </div>
+  </div>
+
+  <div class="summary">
+    <h2>Lesson Summary</h2>
+    <ul>
+      <li>A variable is a named container that stores a value in a program</li>
+      <li>Data types include int (whole numbers), float (decimals), str (text), and bool (True/False)</li>
+      <li>Use <code>type()</code> to check what data type a variable holds</li>
+      <li>Type conversion functions (<code>int()</code>, <code>float()</code>, <code>str()</code>) change data from one type to another</li>
+      <li>An algorithm is a step-by-step plan for solving a problem — always plan before coding</li>
+    </ul>
+  </div>
+
+  <div class="next-lesson">
+    <div>
+      <div class="nl-label">Next lesson</div>
+      <div class="nl-title">Naming Variables in Python</div>
+    </div>
+    <a class="next-link" href="lesson-06.html">Continue →</a>
+  </div>
+
+</div>
+</body>
+</html>

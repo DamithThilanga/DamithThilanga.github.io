@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Project Discussion — Loops and Data Structures — Lesson 15</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="lesson-styles.css"/>
+</head>
+<body>
+<div class="page">
+
+  <div class="topbar">
+    <span class="topbar-course">Python Programming</span>
+    <span class="topbar-lesson">Lesson 15 of 20</span>
+  </div>
+
+  <div class="page-header">
+    <div class="label">Lesson 15</div>
+    <h1>Project Discussion — Data Structures and Loops</h1>
+    <p class="intro">
+      This lesson explains sample solutions for the loop and data structure exercises. Your code does not need to look exactly like these solutions — in programming, many different solutions can solve the same problem.
+    </p>
+  </div>
+
+  <div class="objectives">
+    <h2>What this lesson covers</h2>
+    <ul>
+      <li>Solution walkthroughs for loop practice exercises</li>
+      <li>Solution walkthroughs for applied mini projects</li>
+      <li>Key patterns: accumulators, counters, list operations, break and continue</li>
+    </ul>
+  </div>
+
+  <div class="callout note">
+    <strong>When reviewing your code, focus on:</strong>
+    Did your program produce the correct output? Was your logic correct? Was your code readable?
+  </div>
+
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">01</span>
+      <h2>Exercise 1 — Even or Odd Printer</h2>
+    </div>
+    <p>Ask the user for a number n, then print numbers from 1 to n and state whether each is even or odd.</p>
+    <div class="code-block">
+      <span class="code-filename">solution1.py</span>
+      <pre><code><var>n</var> <op>=</op> <fn>int</fn>(<fn>input</fn>(<str>"Enter a number: "</str>))
+<kw>for</kw> <var>i</var> <kw>in</kw> <fn>range</fn>(<num>1</num>, <var>n</var> <op>+</op> <num>1</num>):
+    <kw>if</kw> <var>i</var> <op>%</op> <num>2</num> <op>==</op> <num>0</num>:
+        <fn>print</fn>(<var>i</var>, <str>"Even"</str>)
+    <kw>else</kw>:
+        <fn>print</fn>(<var>i</var>, <str>"Odd"</str>)</code></pre>
+    </div>
+    <div class="steps">
+      <div class="step"><span class="step-n">1</span> Take input from user and convert to integer</div>
+      <div class="step"><span class="step-n">2</span> Loop from 1 to n — use <code>n + 1</code> because <code>range()</code> excludes the stop value</div>
+      <div class="step"><span class="step-n">3</span> Check if remainder after dividing by 2 is 0 — if yes, number is even</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">02</span>
+      <h2>Exercise 2 — Sum of Numbers</h2>
+    </div>
+    <p>Calculate the sum of numbers from 1 to n.</p>
+    <div class="code-block">
+      <span class="code-filename">solution2.py</span>
+      <pre><code><var>n</var> <op>=</op> <fn>int</fn>(<fn>input</fn>(<str>"Enter a number: "</str>))
+<var>total</var> <op>=</op> <num>0</num>
+<kw>for</kw> <var>i</var> <kw>in</kw> <fn>range</fn>(<num>1</num>, <var>n</var> <op>+</op> <num>1</num>):
+    <var>total</var> <op>=</op> <var>total</var> <op>+</op> <var>i</var>
+<fn>print</fn>(<str>"Total:"</str>, <var>total</var>)</code></pre>
+    </div>
+    <p>We use an <strong>accumulator variable</strong> (<code>total = 0</code>) that starts at 0 and grows with each loop iteration. If n = 3: total = 0+1 = 1, then 1+2 = 3, then 3+3 = 6.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">03</span>
+      <h2>Exercise 3 — Multiplication Table</h2>
+    </div>
+    <p>Print the multiplication table of a number from 1 to 10.</p>
+    <div class="code-block">
+      <span class="code-filename">solution3.py</span>
+      <pre><code><var>num</var> <op>=</op> <fn>int</fn>(<fn>input</fn>(<str>"Enter a number: "</str>))
+<kw>for</kw> <var>i</var> <kw>in</kw> <fn>range</fn>(<num>1</num>, <num>11</num>):
+    <fn>print</fn>(<var>num</var>, <str>"x"</str>, <var>i</var>, <str>"="</str>, <var>num</var> <op>*</op> <var>i</var>)</code></pre>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">04</span>
+      <h2>Exercise 4 — Count Positive and Negative Numbers</h2>
+    </div>
+    <p>Take 5 numbers and count how many are positive and how many are negative.</p>
+    <div class="code-block">
+      <span class="code-filename">solution4.py</span>
+      <pre><code><var>positive</var> <op>=</op> <num>0</num>
+<var>negative</var> <op>=</op> <num>0</num>
+<kw>for</kw> <var>i</var> <kw>in</kw> <fn>range</fn>(<num>5</num>):
+    <var>num</var> <op>=</op> <fn>int</fn>(<fn>input</fn>(<str>"Enter a number: "</str>))
+    <kw>if</kw> <var>num</var> <op>&gt;=</op> <num>0</num>:
+        <var>positive</var> <op>+=</op> <num>1</num>
+    <kw>else</kw>:
+        <var>negative</var> <op>+=</op> <num>1</num>
+<fn>print</fn>(<str>"Positive:"</str>, <var>positive</var>)
+<fn>print</fn>(<str>"Negative:"</str>, <var>negative</var>)</code></pre>
+    </div>
+    <p><code>positive += 1</code> is shorthand for <code>positive = positive + 1</code>. We use two counter variables that start at 0 and increment as needed.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">05</span>
+      <h2>Exercise 5 — Skip Multiples of 3</h2>
+    </div>
+    <p>Print numbers 1 to 20, skipping multiples of 3.</p>
+    <div class="code-block">
+      <span class="code-filename">solution5.py</span>
+      <pre><code><kw>for</kw> <var>i</var> <kw>in</kw> <fn>range</fn>(<num>1</num>, <num>21</num>):
+    <kw>if</kw> <var>i</var> <op>%</op> <num>3</num> <op>==</op> <num>0</num>:
+        <kw>continue</kw>
+    <fn>print</fn>(<var>i</var>)</code></pre>
+    </div>
+    <p><code>continue</code> skips the rest of the current loop iteration when the number is divisible by 3.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">06</span>
+      <h2>Exercise 6 — Number Guessing Game</h2>
+    </div>
+    <p>Keep asking the user until they guess the correct secret number.</p>
+    <div class="code-block">
+      <span class="code-filename">solution6.py</span>
+      <pre><code><var>secret</var> <op>=</op> <num>7</num>
+<kw>while</kw> <kw>True</kw>:
+    <var>guess</var> <op>=</op> <fn>int</fn>(<fn>input</fn>(<str>"Enter your guess: "</str>))
+    <kw>if</kw> <var>guess</var> <op>==</op> <var>secret</var>:
+        <fn>print</fn>(<str>"Correct!"</str>)
+        <kw>break</kw>
+    <kw>else</kw>:
+        <fn>print</fn>(<str>"Try again"</str>)</code></pre>
+    </div>
+    <p><code>while True</code> creates an infinite loop that only stops when the user guesses correctly and <code>break</code> is reached.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">07</span>
+      <h2>Exercise 7 — Password with Limited Attempts</h2>
+    </div>
+    <p>Allow only 3 password attempts.</p>
+    <div class="code-block">
+      <span class="code-filename">solution7.py</span>
+      <pre><code><var>password</var> <op>=</op> <str>"admin123"</str>
+<kw>for</kw> <var>i</var> <kw>in</kw> <fn>range</fn>(<num>3</num>):
+    <var>user_input</var> <op>=</op> <fn>input</fn>(<str>"Enter password: "</str>)
+    <kw>if</kw> <var>user_input</var> <op>==</op> <var>password</var>:
+        <fn>print</fn>(<str>"Access Granted"</str>)
+        <kw>break</kw>
+<kw>else</kw>:
+    <fn>print</fn>(<str>"Access Denied"</str>)</code></pre>
+    </div>
+    <div class="callout note">
+      <strong>for-else pattern</strong>
+      Python's <code>for</code> loop supports an <code>else</code> block. The <code>else</code> runs only if the loop completed without hitting a <code>break</code>. Here, it runs if all 3 attempts were used up without a correct password.
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">08</span>
+      <h2>Mini Project 1 — Student Marks Analyzer</h2>
+    </div>
+    <p>Ask user to enter 5 marks, store them in a list, and calculate total, average, pass count, and fail count.</p>
+    <div class="code-block">
+      <span class="code-filename">marks_analyzer.py</span>
+      <pre><code><var>marks</var> <op>=</op> []
+<kw>for</kw> <var>i</var> <kw>in</kw> <fn>range</fn>(<num>5</num>):
+    <var>mark</var> <op>=</op> <fn>int</fn>(<fn>input</fn>(<str>"Enter mark: "</str>))
+    <var>marks</var>.<fn>append</fn>(<var>mark</var>)
+
+<var>total</var> <op>=</op> <num>0</num>
+<var>pass_count</var> <op>=</op> <num>0</num>
+<var>fail_count</var> <op>=</op> <num>0</num>
+<kw>for</kw> <var>mark</var> <kw>in</kw> <var>marks</var>:
+    <var>total</var> <op>+=</op> <var>mark</var>
+    <kw>if</kw> <var>mark</var> <op>&gt;=</op> <num>50</num>:
+        <var>pass_count</var> <op>+=</op> <num>1</num>
+    <kw>else</kw>:
+        <var>fail_count</var> <op>+=</op> <num>1</num>
+
+<var>average</var> <op>=</op> <var>total</var> <op>/</op> <fn>len</fn>(<var>marks</var>)
+<fn>print</fn>(<str>"Total:"</str>, <var>total</var>)
+<fn>print</fn>(<str>"Average:"</str>, <var>average</var>)
+<fn>print</fn>(<str>"Pass:"</str>, <var>pass_count</var>)
+<fn>print</fn>(<str>"Fail:"</str>, <var>fail_count</var>)</code></pre>
+    </div>
+    <p><code>len(marks)</code> gives the total number of items in the list. <code>marks.append(mark)</code> adds each mark to the list.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">09</span>
+      <h2>Mini Project 2 — Simple ATM Menu</h2>
+    </div>
+    <div class="code-block">
+      <span class="code-filename">atm.py</span>
+      <pre><code><var>balance</var> <op>=</op> <num>1000</num>
+<kw>while</kw> <kw>True</kw>:
+    <fn>print</fn>(<str>"1. Check Balance"</str>)
+    <fn>print</fn>(<str>"2. Deposit"</str>)
+    <fn>print</fn>(<str>"3. Withdraw"</str>)
+    <fn>print</fn>(<str>"4. Exit"</str>)
+    <var>choice</var> <op>=</op> <fn>input</fn>(<str>"Enter choice: "</str>)
+    <kw>if</kw> <var>choice</var> <op>==</op> <str>"1"</str>:
+        <fn>print</fn>(<str>"Balance:"</str>, <var>balance</var>)
+    <kw>elif</kw> <var>choice</var> <op>==</op> <str>"2"</str>:
+        <var>amount</var> <op>=</op> <fn>int</fn>(<fn>input</fn>(<str>"Enter deposit amount: "</str>))
+        <var>balance</var> <op>+=</op> <var>amount</var>
+    <kw>elif</kw> <var>choice</var> <op>==</op> <str>"3"</str>:
+        <var>amount</var> <op>=</op> <fn>int</fn>(<fn>input</fn>(<str>"Enter withdrawal amount: "</str>))
+        <kw>if</kw> <var>amount</var> <op>&lt;=</op> <var>balance</var>:
+            <var>balance</var> <op>-=</op> <var>amount</var>
+        <kw>else</kw>:
+            <fn>print</fn>(<str>"Insufficient balance"</str>)
+    <kw>elif</kw> <var>choice</var> <op>==</op> <str>"4"</str>:
+        <fn>print</fn>(<str>"Goodbye"</str>)
+        <kw>break</kw>
+    <kw>else</kw>:
+        <fn>print</fn>(<str>"Invalid choice"</str>)</code></pre>
+    </div>
+    <p>The menu repeats using <code>while True</code>. Each option is handled using <code>if/elif/else</code>. The program exits only when the user chooses 4 and <code>break</code> is executed.</p>
+  </div>
+
+  <div class="summary">
+    <h2>Lesson Summary</h2>
+    <ul>
+      <li>Accumulator pattern: start a variable at 0 and add to it in each loop iteration</li>
+      <li>Counter pattern: start at 0 and increment by 1 when a condition is met</li>
+      <li><code>list.append()</code> adds items to a list; <code>len(list)</code> gives the count of items</li>
+      <li><code>while True</code> with <code>break</code> is useful for menus and games where you don't know how many iterations are needed</li>
+      <li>The <code>for...else</code> pattern runs the <code>else</code> block only if the loop finished without <code>break</code></li>
+    </ul>
+  </div>
+
+  <div class="next-lesson">
+    <div>
+      <div class="nl-label">Next lesson</div>
+      <div class="nl-title">Python String Formatting and Comments</div>
+    </div>
+    <a class="next-link" href="lesson-16.html">Continue →</a>
+  </div>
+
+</div>
+</body>
+</html>

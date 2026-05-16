@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mini Project with Revision — Lesson 10</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="lesson-styles.css"/>
+</head>
+<body>
+<div class="page">
+
+  <div class="topbar">
+    <span class="topbar-course">Python Programming</span>
+    <span class="topbar-lesson">Lesson 10 of 20</span>
+  </div>
+
+  <div class="page-header">
+    <div class="label">Lesson 10</div>
+    <h1>Mini Project — Revision with Variables, Input, and Operators</h1>
+    <p class="intro">
+      Let's recap what we have learned so far and apply these concepts to solve real tasks. This lesson walks through several worked examples step by step and ends with a project for you to try alone.
+    </p>
+  </div>
+
+  <div class="objectives">
+    <h2>By the end of this lesson you will be able to</h2>
+    <ul>
+      <li>Apply <code>input()</code>, variables, and arithmetic operators together in programs</li>
+      <li>Understand and fix common mistakes related to type conversion</li>
+      <li>Write multi-step programs that process user input and produce meaningful output</li>
+      <li>Build a simple multi-operation calculator program</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">01</span>
+      <h2>Task 1: Name and City Message</h2>
+    </div>
+    <p>Write a program to ask the user to enter their name and city, then print: "[name] is living in [city]".</p>
+    <p>Try it yourself before reading the solution.</p>
+    <div class="code-block">
+      <span class="code-filename">task1.py</span>
+      <pre><code><var>name</var> <op>=</op> <fn>input</fn>(<str>"What's your name? "</str>)
+<var>city</var> <op>=</op> <fn>input</fn>(<str>"Which city are you from? "</str>)
+<fn>print</fn>(<var>name</var>, <str>"is living in"</str>, <var>city</var>)</code></pre>
+    </div>
+    <div class="output-block">
+      <div class="out-label">Example run</div>
+      What's your name? John<br>
+      Which city are you from? Colombo<br>
+      John is living in Colombo
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">02</span>
+      <h2>Task 2: Adding Two Numbers — The Common Mistake</h2>
+    </div>
+    <p>Let's write a program to add two numbers entered by the user and display the sum.</p>
+    <div class="code-block">
+      <span class="code-filename">buggy.py</span>
+      <pre><code><var>number1</var> <op>=</op> <fn>input</fn>(<str>"Enter the first number: "</str>)
+<var>number2</var> <op>=</op> <fn>input</fn>(<str>"Enter the second number: "</str>)
+<var>sum</var> <op>=</op> <var>number1</var> <op>+</op> <var>number2</var>
+<fn>print</fn>(<str>"The sum is:"</str>, <var>sum</var>)</code></pre>
+    </div>
+    <p>Run this, enter two numbers, and see the result. The output is wrong — instead of adding the numbers, Python joined the strings. This is because <code>input()</code> always returns a string, and <code>+</code> on strings means concatenation.</p>
+
+    <div class="callout warn">
+      <strong>String concatenation vs number addition</strong>
+      If the user enters <code>2</code> and <code>3</code>, the result will be <code>23</code> (two strings joined), not <code>5</code> (the sum).
+    </div>
+
+    <p>Here is the corrected version:</p>
+    <div class="code-block">
+      <span class="code-filename">fixed.py</span>
+      <pre><code><var>number1</var> <op>=</op> <fn>input</fn>(<str>"Enter the first number: "</str>)
+<var>number2</var> <op>=</op> <fn>input</fn>(<str>"Enter the second number: "</str>)
+<var>number1</var> <op>=</op> <fn>int</fn>(<var>number1</var>)
+<var>number2</var> <op>=</op> <fn>int</fn>(<var>number2</var>)
+<var>sum</var> <op>=</op> <var>number1</var> <op>+</op> <var>number2</var>
+<fn>print</fn>(<str>"The sum is"</str>, <var>sum</var>)</code></pre>
+    </div>
+    <p>Lines 3 and 4 do the type conversion from string to integer. Alternatively, you can do it all on one line:</p>
+    <div class="code-block">
+      <pre><code><var>number1</var> <op>=</op> <fn>int</fn>(<fn>input</fn>(<str>"Enter the first number: "</str>))
+<var>number2</var> <op>=</op> <fn>int</fn>(<fn>input</fn>(<str>"Enter the second number: "</str>))
+<fn>print</fn>(<str>"The sum is"</str>, <var>number1</var> <op>+</op> <var>number2</var>)</code></pre>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">03</span>
+      <h2>Task 3: Celsius to Kelvin</h2>
+    </div>
+    <p>Write a program to convert temperature from Celsius to Kelvin. (To convert to Kelvin, add 273 to the Celsius value.)</p>
+    <div class="code-block">
+      <span class="code-filename">temperature.py</span>
+      <pre><code><var>temperature_c</var> <op>=</op> <fn>float</fn>(<fn>input</fn>(<str>"Enter the temperature in Celsius: "</str>))
+<var>temperature_k</var> <op>=</op> <var>temperature_c</var> <op>+</op> <num>273.0</num>
+<fn>print</fn>(<str>"Temperature in Kelvin:"</str>, <var>temperature_k</var>)</code></pre>
+    </div>
+    <div class="callout note">
+      <strong>Why float() instead of int()?</strong>
+      Temperatures can have decimal points (e.g. 36.5°C), so we use <code>float()</code> instead of <code>int()</code>.
+    </div>
+    <p>If we don't need to use <code>temperature_k</code> again, we can shorten the program to two lines:</p>
+    <div class="code-block">
+      <pre><code><var>temperature_c</var> <op>=</op> <fn>float</fn>(<fn>input</fn>(<str>"Enter the temperature in Celsius: "</str>))
+<fn>print</fn>(<str>"Temperature in Kelvin:"</str>, <var>temperature_c</var> <op>+</op> <num>273.0</num>)</code></pre>
+    </div>
+    <div class="callout tip">
+      <strong>In programming, there can be more than one correct answer</strong>
+      The longer version and the shorter version are both correct. Choose whichever is clearer for the situation.
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">04</span>
+      <h2>Task 4: Age Next Year</h2>
+    </div>
+    <p>Write a program that gets the user's age and prints their age next year.</p>
+    <div class="code-block">
+      <span class="code-filename">age.py</span>
+      <pre><code><var>age</var> <op>=</op> <fn>int</fn>(<fn>input</fn>(<str>"How old are you now? "</str>))
+<fn>print</fn>(<str>"You will be"</str>, <var>age</var> <op>+</op> <num>1</num>, <str>"years old next year"</str>)</code></pre>
+    </div>
+    <div class="callout warn">
+      <strong>What if the user enters a word like "Hello"?</strong>
+      The program will crash because <code>int("Hello")</code> raises an error. A good program should handle this — we will learn exception handling in Lesson 19. Until then, please don't enter strings when a number is expected.
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">05</span>
+      <h2>Task 5: Average Marks of Five Students</h2>
+    </div>
+    <p>Write a program to calculate the average marks of five students.</p>
+    <div class="code-block">
+      <span class="code-filename">average.py</span>
+      <pre><code><var>marks1</var> <op>=</op> <fn>int</fn>(<fn>input</fn>(<str>"Enter marks of student 1: "</str>))
+<var>marks2</var> <op>=</op> <fn>int</fn>(<fn>input</fn>(<str>"Enter marks of student 2: "</str>))
+<var>marks3</var> <op>=</op> <fn>int</fn>(<fn>input</fn>(<str>"Enter marks of student 3: "</str>))
+<var>marks4</var> <op>=</op> <fn>int</fn>(<fn>input</fn>(<str>"Enter marks of student 4: "</str>))
+<var>marks5</var> <op>=</op> <fn>int</fn>(<fn>input</fn>(<str>"Enter marks of student 5: "</str>))
+<var>average</var> <op>=</op> (<var>marks1</var> <op>+</op> <var>marks2</var> <op>+</op> <var>marks3</var> <op>+</op> <var>marks4</var> <op>+</op> <var>marks5</var>) <op>/</op> <num>5</num>
+<fn>print</fn>(<str>"Average marks:"</str>, <var>average</var>)</code></pre>
+    </div>
+    <div class="callout note">
+      <strong>A more efficient approach exists</strong>
+      There is a more efficient way of doing this with a loop. You will learn about loops in Lesson 14 and can revisit this problem then.
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">06</span>
+      <h2>Project: Simple Calculator</h2>
+    </div>
+    <p>Build a basic calculator that gets two numbers from the user and performs addition, subtraction, multiplication, and division, displaying the result of each operation.</p>
+    <p>Try it yourself first, then compare your solution:</p>
+    <div class="code-block">
+      <span class="code-filename">calculator.py</span>
+      <pre><code><var>num1</var> <op>=</op> <fn>int</fn>(<fn>input</fn>(<str>"Enter first number: "</str>))
+<var>num2</var> <op>=</op> <fn>int</fn>(<fn>input</fn>(<str>"Enter second number: "</str>))
+<fn>print</fn>(<str>"Addition:"</str>, <var>num1</var> <op>+</op> <var>num2</var>)
+<fn>print</fn>(<str>"Subtraction:"</str>, <var>num1</var> <op>-</op> <var>num2</var>)
+<fn>print</fn>(<str>"Multiplication:"</str>, <var>num1</var> <op>*</op> <var>num2</var>)
+<fn>print</fn>(<str>"Division:"</str>, <var>num1</var> <op>/</op> <var>num2</var>)</code></pre>
+    </div>
+    <div class="output-block">
+      <div class="out-label">Example run</div>
+      Enter first number: 10<br>
+      Enter second number: 3<br>
+      Addition: 13<br>
+      Subtraction: 7<br>
+      Multiplication: 30<br>
+      Division: 3.3333333333333335
+    </div>
+  </div>
+
+  <div class="summary">
+    <h2>Lesson Summary</h2>
+    <ul>
+      <li><code>input()</code> always returns a string — convert to <code>int()</code> or <code>float()</code> when doing arithmetic</li>
+      <li>You can do type conversion in the same line as <code>input()</code> to keep code shorter</li>
+      <li>String concatenation with <code>+</code> is different from number addition — this is a very common mistake</li>
+      <li>Use <code>float()</code> when the input may have a decimal point</li>
+      <li>There is often more than one correct solution to a programming problem</li>
+    </ul>
+  </div>
+
+  <div class="next-lesson">
+    <div>
+      <div class="nl-label">Next lesson</div>
+      <div class="nl-title">Decision Making in Python — Conditionals</div>
+    </div>
+    <a class="next-link" href="lesson-11.html">Continue →</a>
+  </div>
+
+</div>
+</body>
+</html>

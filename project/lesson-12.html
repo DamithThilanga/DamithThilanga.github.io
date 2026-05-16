@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Project Discussion — Conditionals — Lesson 12</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="lesson-styles.css"/>
+</head>
+<body>
+<div class="page">
+
+  <div class="topbar">
+    <span class="topbar-course">Python Programming</span>
+    <span class="topbar-lesson">Lesson 12 of 20</span>
+  </div>
+
+  <div class="page-header">
+    <div class="label">Lesson 12</div>
+    <h1>Project Discussion — Conditional Exercises</h1>
+    <p class="intro">
+      In this lesson, we discuss solutions for the conditional exercises. Each solution includes the code, an explanation, and a sample output. These exercises mainly use <code>if</code>, <code>elif</code>, <code>else</code>, comparison operators, and logical operators.
+    </p>
+  </div>
+
+  <div class="objectives">
+    <h2>What this lesson covers</h2>
+    <ul>
+      <li>Solution walkthroughs for 8 conditional programming exercises</li>
+      <li>Key patterns and logic explanations for each solution</li>
+      <li>Common pitfalls to watch out for in conditional programs</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">01</span>
+      <h2>Exercise 1 — Check if a Number Is Positive</h2>
+    </div>
+    <p><strong>Question:</strong> Write a program that checks if a number is positive.</p>
+    <div class="code-block">
+      <span class="code-filename">exercise1.py</span>
+      <pre><code><var>number</var> <op>=</op> <fn>float</fn>(<fn>input</fn>(<str>"Enter a number: "</str>))
+<kw>if</kw> <var>number</var> <op>&gt;</op> <num>0</num>:
+    <fn>print</fn>(<str>"Positive number"</str>)</code></pre>
+    </div>
+    <p>The program gets a number from the user and checks if it is greater than 0. If true, it prints "Positive number".</p>
+    <div class="output-block">
+      <div class="out-label">Sample run</div>
+      Enter a number: 7<br>
+      Positive number
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">02</span>
+      <h2>Exercise 2 — Even or Odd</h2>
+    </div>
+    <p><strong>Question:</strong> Check whether a number is even or odd.</p>
+    <div class="code-block">
+      <span class="code-filename">exercise2.py</span>
+      <pre><code><var>number</var> <op>=</op> <fn>int</fn>(<fn>input</fn>(<str>"Enter a number: "</str>))
+<kw>if</kw> <var>number</var> <op>%</op> <num>2</num> <op>==</op> <num>0</num>:
+    <fn>print</fn>(<str>"Even number"</str>)
+<kw>else</kw>:
+    <fn>print</fn>(<str>"Odd number"</str>)</code></pre>
+    </div>
+    <p>The <code>%</code> operator gives the remainder. If <code>number % 2</code> equals 0, the number is divisible by 2 and therefore even.</p>
+    <div class="output-block">
+      <div class="out-label">Sample run</div>
+      Enter a number: 9<br>
+      Odd number
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">03</span>
+      <h2>Exercise 3 — Age Categorizer</h2>
+    </div>
+    <p><strong>Question:</strong> Categorize age as Child (&lt;13), Teen (13–19), Adult (20+), or Invalid (&gt;120).</p>
+    <div class="code-block">
+      <span class="code-filename">exercise3.py</span>
+      <pre><code><var>age</var> <op>=</op> <fn>int</fn>(<fn>input</fn>(<str>"Enter age: "</str>))
+<kw>if</kw> <var>age</var> <op>&gt;</op> <num>120</num>:
+    <fn>print</fn>(<str>"Invalid age"</str>)
+<kw>elif</kw> <var>age</var> <op>&lt;</op> <num>13</num>:
+    <fn>print</fn>(<str>"Child"</str>)
+<kw>elif</kw> <var>age</var> <op>&lt;=</op> <num>19</num>:
+    <fn>print</fn>(<str>"Teen"</str>)
+<kw>else</kw>:
+    <fn>print</fn>(<str>"Adult"</str>)</code></pre>
+    </div>
+    <div class="callout note">
+      <strong>Important: check invalid age first</strong>
+      If age is 150, it is also greater than 20. Without checking the invalid condition first, the program might incorrectly print "Adult" for an age of 150.
+    </div>
+    <div class="output-block">
+      <div class="out-label">Sample run</div>
+      Enter age: 15<br>
+      Teen
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">04</span>
+      <h2>Exercise 4 — Divisibility by 5</h2>
+    </div>
+    <p><strong>Question:</strong> Check if a number is divisible by 5.</p>
+    <div class="code-block">
+      <span class="code-filename">exercise4.py</span>
+      <pre><code><var>number</var> <op>=</op> <fn>int</fn>(<fn>input</fn>(<str>"Enter number: "</str>))
+<kw>if</kw> <var>number</var> <op>%</op> <num>5</num> <op>==</op> <num>0</num>:
+    <fn>print</fn>(<str>"Divisible by 5"</str>)
+<kw>else</kw>:
+    <fn>print</fn>(<str>"Not divisible by 5"</str>)</code></pre>
+    </div>
+    <p>If the remainder after dividing by 5 is zero, the number is divisible by 5.</p>
+    <div class="output-block">
+      <div class="out-label">Sample run</div>
+      Enter number: 25<br>
+      Divisible by 5
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">05</span>
+      <h2>Exercise 5 — Compare Two Numbers</h2>
+    </div>
+    <p><strong>Question:</strong> Compare two numbers and print which is larger, or if they are equal.</p>
+    <div class="code-block">
+      <span class="code-filename">exercise5.py</span>
+      <pre><code><var>num1</var> <op>=</op> <fn>float</fn>(<fn>input</fn>(<str>"Enter first number: "</str>))
+<var>num2</var> <op>=</op> <fn>float</fn>(<fn>input</fn>(<str>"Enter second number: "</str>))
+<kw>if</kw> <var>num1</var> <op>&gt;</op> <var>num2</var>:
+    <fn>print</fn>(<str>"First number is larger than the second number"</str>)
+<kw>elif</kw> <var>num2</var> <op>&gt;</op> <var>num1</var>:
+    <fn>print</fn>(<str>"Second number is larger than the first number"</str>)
+<kw>else</kw>:
+    <fn>print</fn>(<str>"Two numbers are equal"</str>)</code></pre>
+    </div>
+    <p>There are exactly three possibilities: first larger, second larger, or equal. Three branches handle all three cases.</p>
+    <div class="output-block">
+      <div class="out-label">Sample run</div>
+      Enter first number: 10<br>
+      Enter second number: 10<br>
+      Two numbers are equal
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">06</span>
+      <h2>Exercise 6 — Username and Password Check</h2>
+    </div>
+    <p><strong>Question:</strong> Check username and password. Correct credentials are username: JohnW, password: JohN#W123.</p>
+    <div class="code-block">
+      <span class="code-filename">exercise6.py</span>
+      <pre><code><var>username</var> <op>=</op> <fn>input</fn>(<str>"Enter username: "</str>)
+<var>password</var> <op>=</op> <fn>input</fn>(<str>"Enter password: "</str>)
+<kw>if</kw> <var>username</var> <op>==</op> <str>"JohnW"</str> <kw>and</kw> <var>password</var> <op>==</op> <str>"JohN#W123"</str>:
+    <fn>print</fn>(<str>"Welcome John"</str>)
+<kw>else</kw>:
+    <fn>print</fn>(<str>"Username or password incorrect. Access denied"</str>)</code></pre>
+    </div>
+    <p>Uses the logical operator <code>and</code> — both conditions (correct username AND correct password) must be true simultaneously.</p>
+    <div class="output-block">
+      <div class="out-label">Sample run</div>
+      Enter username: JohnW<br>
+      Enter password: JohN#W123<br>
+      Welcome John
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">07</span>
+      <h2>Exercise 7 — Divisibility by 2 and 3</h2>
+    </div>
+    <p><strong>Question:</strong> Check divisibility by 2 and 3 with four possible outputs.</p>
+    <div class="code-block">
+      <span class="code-filename">exercise7.py</span>
+      <pre><code><var>number</var> <op>=</op> <fn>int</fn>(<fn>input</fn>(<str>"Enter number: "</str>))
+<kw>if</kw> <var>number</var> <op>%</op> <num>2</num> <op>==</op> <num>0</num> <kw>and</kw> <var>number</var> <op>%</op> <num>3</num> <op>==</op> <num>0</num>:
+    <fn>print</fn>(<str>"Divisible by both 2 and 3"</str>)
+<kw>elif</kw> <var>number</var> <op>%</op> <num>2</num> <op>==</op> <num>0</num>:
+    <fn>print</fn>(<str>"Divisible only by 2"</str>)
+<kw>elif</kw> <var>number</var> <op>%</op> <num>3</num> <op>==</op> <num>0</num>:
+    <fn>print</fn>(<str>"Divisible only by 3"</str>)
+<kw>else</kw>:
+    <fn>print</fn>(<str>"Not divisible by either"</str>)</code></pre>
+    </div>
+    <div class="callout note">
+      <strong>Check the most specific condition first</strong>
+      If a number is divisible by both 2 and 3, it is also individually divisible by each. By checking "both" first, we avoid incorrectly printing "only by 2" for a number like 12 which is also divisible by 3.
+    </div>
+    <div class="output-block">
+      <div class="out-label">Sample run</div>
+      Enter number: 12<br>
+      Divisible by both 2 and 3
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">08</span>
+      <h2>Exercise 8 — Bill Splitting with Discount</h2>
+    </div>
+    <p><strong>Question:</strong> Split a restaurant bill equally among friends. Apply a 10% discount if the bill is over 5000, or 5% if over 2000.</p>
+    <div class="code-block">
+      <span class="code-filename">exercise8.py</span>
+      <pre><code><var>bill</var> <op>=</op> <fn>float</fn>(<fn>input</fn>(<str>"Enter total bill amount: "</str>))
+<var>people</var> <op>=</op> <fn>int</fn>(<fn>input</fn>(<str>"Enter number of people: "</str>))
+
+<kw>if</kw> <var>bill</var> <op>&gt;</op> <num>5000</num>:
+    <var>discount</var> <op>=</op> <var>bill</var> <op>*</op> <num>0.10</num>
+<kw>elif</kw> <var>bill</var> <op>&gt;</op> <num>2000</num>:
+    <var>discount</var> <op>=</op> <var>bill</var> <op>*</op> <num>0.05</num>
+<kw>else</kw>:
+    <var>discount</var> <op>=</op> <num>0</num>
+
+<var>final_bill</var> <op>=</op> <var>bill</var> <op>-</op> <var>discount</var>
+<var>per_person</var> <op>=</op> <var>final_bill</var> <op>/</op> <var>people</var>
+<fn>print</fn>(<str>"Discount:"</str>, <var>discount</var>)
+<fn>print</fn>(<str>"Final bill:"</str>, <var>final_bill</var>)
+<fn>print</fn>(<str>"Each person pays:"</str>, <var>per_person</var>)</code></pre>
+    </div>
+    <div class="output-block">
+      <div class="out-label">Sample run</div>
+      Enter total bill amount: 6000<br>
+      Enter number of people: 4<br>
+      Discount: 600.0<br>
+      Final bill: 5400.0<br>
+      Each person pays: 1350.0
+    </div>
+  </div>
+
+  <div class="summary">
+    <h2>Lesson Summary</h2>
+    <ul>
+      <li>Always check the most specific or most extreme condition first in an <code>if-elif</code> chain</li>
+      <li>Use <code>and</code> when multiple conditions must all be true simultaneously</li>
+      <li>The <code>%</code> operator is very useful for checking divisibility</li>
+      <li>In Python, conditions are evaluated in order — once a True condition is found, the rest are skipped</li>
+      <li>Your code doesn't need to look exactly like sample solutions — many different solutions can solve the same problem</li>
+    </ul>
+  </div>
+
+  <div class="next-lesson">
+    <div>
+      <div class="nl-label">Next lesson</div>
+      <div class="nl-title">Data Structures — Lists, Tuples, Sets, and Dictionaries</div>
+    </div>
+    <a class="next-link" href="lesson-13.html">Continue →</a>
+  </div>
+
+</div>
+</body>
+</html>

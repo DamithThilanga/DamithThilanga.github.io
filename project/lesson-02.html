@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Writing Useful Programs — Lesson 2</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="lesson-styles.css"/>
+</head>
+<body>
+<div class="page">
+
+  <div class="topbar">
+    <span class="topbar-course">Python Programming</span>
+    <span class="topbar-lesson">Lesson 2 of 20</span>
+  </div>
+
+  <div class="page-header">
+    <div class="label">Lesson 2</div>
+    <h1>Writing Useful Programs</h1>
+    <p class="intro">
+      "My program somehow works and gives a result" alone is not enough. Good programs have several essential qualities. Learning these fundamentals from the beginning will make you a better programmer — bad habits, once learned, are very difficult to unlearn.
+    </p>
+  </div>
+
+  <div class="objectives">
+    <h2>By the end of this lesson you will be able to</h2>
+    <ul>
+      <li>Explain the characteristics of a useful computer program, comparing with real-world software</li>
+      <li>Recognize the importance of problem-solving before writing code</li>
+      <li>Apply basic good programming practices such as readability and proper organization from the very first codes you write</li>
+      <li>Understand the importance of testing and debugging programs</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">01</span>
+      <h2>Usefulness</h2>
+    </div>
+    <p>First, the program you write should be useful. If a task can be easily done with the existing method, you don't need to write a program for it in the first place. Writing a program to calculate someone's age from their birth year won't be of much use because most people can calculate that with their brains or a simple calculator.</p>
+    <div class="callout note">
+      <strong>Key question before you start</strong>
+      Does this program make a task easier, faster, or more reliable than the current method? If the answer is no, reconsider whether the program is needed.
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">02</span>
+      <h2>Accuracy and Reliability</h2>
+    </div>
+    <p>The results of your program must always be accurate. A program written to calculate BMI (body mass index) that gives wrong answers most of the time is absolutely useless. If that program often crashes and users are not sure when it will work properly, that's another bad sign. Such a program is not reliable. <strong>Reliability is an essential property of a computer program.</strong></p>
+    <p>Your computer program should also give results faster and more conveniently than the currently available technology. A BMI calculator that always gives correct results but takes one hour per calculation is useless — you can do it with pen and paper faster.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">03</span>
+      <h2>Exception Handling</h2>
+    </div>
+    <p>An important concept in making good programs is <strong>exception handling</strong>. Think about an ATM machine. What happens if someone inserts an invalid card? Since the machine is not programmed to process that card, the program would crash, depriving other users until the machine is rebooted. But that doesn't happen in real life — the program is designed to handle the exception of an invalid card.</p>
+    <p>Applying the same concept to a BMI calculator: if the user enters 0 as the height, the program will crash trying to divide by zero. You should add code to handle that exception. Another user might enter their name instead of weight — that exception should also be handled.</p>
+    <div class="callout tip">
+      <strong>We will learn this properly later</strong>
+      Exception handling using <code>try</code> and <code>except</code> is covered in Lesson 19. For now, just understand why it matters.
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">04</span>
+      <h2>User Friendliness</h2>
+    </div>
+    <p>User friendliness is another important feature of a computer program. Simply put, it describes how easily your program allows users to use it. Remember the last time you visited an e-commerce website. How easy was it to navigate? Did you have to ask anyone how to place an order? Hopefully not — the interface was self-explanatory.</p>
+    <p>When designing user interfaces, it's better to comply with widely accepted norms. Fonts, colors, sizes, and even the positions of certain icons are significant. If you place the cart icon, search bar, and menu in unexpected positions, users will be confused and unlikely to engage with your program.</p>
+    <div class="callout warn">
+      <strong>Commercial impact</strong>
+      If your program is a commercial product like an e-commerce website, you should make it as attractive and convenient as possible. Poor user friendliness drives users to competitors.
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">05</span>
+      <h2>Efficient Use of Resources</h2>
+    </div>
+    <p>You should think about the efficient use of the computer's resources. Your algorithms should be written in the most efficient way, using the minimum amount of processing power, RAM, hard disk space, and other resources. If your program slows down the computer or demands closing other software, users will consider alternatives. This is one reason some users prefer Firefox over Chrome.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">06</span>
+      <h2>Readability and Collaboration</h2>
+    </div>
+    <p>Most of the time, you are not the only person coding in a project. Therefore, others should be able to understand what you have done. Your code should be written taking that into consideration. This includes <strong>commenting</strong>, rational use of variable names, clear algorithms, and many other practices. If these are done poorly, even you might find it difficult to understand your own program later.</p>
+    <div class="callout note">
+      <strong>Coming up</strong>
+      We will discuss inline commenting in detail in Lesson 16.
+    </div>
+  </div>
+
+  <div class="summary">
+    <h2>Lesson Summary</h2>
+    <ul>
+      <li>A good program must be useful — it should make tasks easier, faster, or more reliable</li>
+      <li>Accuracy and reliability are essential — programs must produce correct results consistently</li>
+      <li>Exception handling prevents crashes from unexpected user input</li>
+      <li>User-friendly programs follow accepted interface norms and are easy to navigate</li>
+      <li>Efficient programs make good use of CPU, memory, and disk resources</li>
+      <li>Readable code — with good comments and variable names — is easier to maintain and share</li>
+    </ul>
+  </div>
+
+  <div class="next-lesson">
+    <div>
+      <div class="nl-label">Next lesson</div>
+      <div class="nl-title">Programming Languages</div>
+    </div>
+    <a class="next-link" href="lesson-03.html">Continue →</a>
+  </div>
+
+</div>
+</body>
+</html>
