@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Project Discussion — Functions and Error Handling — Lesson 20</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="lesson-styles.css"/>
+</head>
+<body>
+<div class="page">
+
+  <div class="topbar">
+    <span class="topbar-course">Python Programming</span>
+    <span class="topbar-lesson">Lesson 20 of 20</span>
+  </div>
+
+  <div class="page-header">
+    <div class="label">Lesson 20 — Solution Discussion</div>
+    <h1>Project: Functions and Error Handling</h1>
+    <p class="intro">
+      In the previous activities, you first built programs using functions, parameters, return values, and modules — then enhanced those same programs using <code>try</code> and <code>except</code>. This is how real programs are often developed: make it work, then improve its reliability. In this lesson, we discuss both stages for each project.
+    </p>
+  </div>
+
+  <div class="objectives">
+    <h2>In this lesson you will see</h2>
+    <ul>
+      <li>How each project is built with functions first</li>
+      <li>How error handling is layered on top to improve reliability</li>
+      <li>The programming mindset: build → improve → refine</li>
+    </ul>
+  </div>
+
+  <!-- ── Project 01 ── -->
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">01</span>
+      <h2>Project 1 — Greeting Function</h2>
+    </div>
+    <p>Ask user for name and greet them.</p>
+
+    <div class="code-block">
+      <span class="code-filename">Step 1 — Function solution</span>
+      <pre><code><kw>def</kw> <fn>greet_user</fn>(<var>name</var>):
+    <fn>print</fn>(<str>f"Hello {name}"</str>)
+
+<var>name</var> <op>=</op> <fn>input</fn>(<str>"Enter your name: "</str>)
+<fn>greet_user</fn>(<var>name</var>)</code></pre>
+    </div>
+
+    <div class="output-block">
+      <div class="out-label">Example</div>
+      Enter your name: Nimal<br>Hello Nimal
+    </div>
+
+    <div class="code-block">
+      <span class="code-filename">Step 2 — With error handling</span>
+      <pre><code><kw>def</kw> <fn>greet_user</fn>(<var>name</var>):
+    <fn>print</fn>(<str>f"Hello {name}"</str>)
+
+<kw>try</kw>:
+    <var>name</var> <op>=</op> <fn>input</fn>(<str>"Enter your name: "</str>)
+    <kw>if</kw> <var>name</var> <op>==</op> <str>""</str>:
+        <fn>print</fn>(<str>"Name cannot be empty"</str>)
+    <kw>else</kw>:
+        <fn>greet_user</fn>(<var>name</var>)
+<kw>except</kw>:
+    <fn>print</fn>(<str>"Something went wrong"</str>)</code></pre>
+    </div>
+    <div class="callout note"><strong>Improvement</strong> — checks for empty input.</div>
+  </div>
+
+  <!-- ── Project 02 ── -->
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">02</span>
+      <h2>Project 2 — Age Display Function</h2>
+    </div>
+    <p>Ask user for age and display it.</p>
+
+    <div class="code-compare">
+      <div class="pane correct">
+        <span class="pane-tag correct">Step 1 — Function</span>
+        <pre><code><kw>def</kw> <fn>display_age</fn>(<var>age</var>):
+    <fn>print</fn>(<str>f"You are {age} years old"</str>)
+
+<var>age</var> <op>=</op> <fn>int</fn>(<fn>input</fn>(<str>"Enter your age: "</str>))
+<fn>display_age</fn>(<var>age</var>)</code></pre>
+      </div>
+      <div class="pane correct">
+        <span class="pane-tag correct">Step 2 — With error handling</span>
+        <pre><code><kw>def</kw> <fn>display_age</fn>(<var>age</var>):
+    <fn>print</fn>(<str>f"You are {age} years old"</str>)
+
+<kw>try</kw>:
+    <var>age</var> <op>=</op> <fn>int</fn>(<fn>input</fn>(<str>"Enter your age: "</str>))
+    <fn>display_age</fn>(<var>age</var>)
+<kw>except</kw> ValueError:
+    <fn>print</fn>(<str>"Please enter a valid age"</str>)</code></pre>
+      </div>
+    </div>
+    <div class="callout note"><strong>Improvement</strong> — handles invalid integer conversion.</div>
+  </div>
+
+  <!-- ── Project 03 ── -->
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">03</span>
+      <h2>Project 3 — Addition Calculator</h2>
+    </div>
+
+    <div class="code-compare">
+      <div class="pane correct">
+        <span class="pane-tag correct">Step 1 — Function</span>
+        <pre><code><kw>def</kw> <fn>add_numbers</fn>(<var>a</var>, <var>b</var>):
+    <kw>return</kw> <var>a</var> <op>+</op> <var>b</var>
+
+<var>num1</var> <op>=</op> <fn>int</fn>(<fn>input</fn>(<str>"Enter first number: "</str>))
+<var>num2</var> <op>=</op> <fn>int</fn>(<fn>input</fn>(<str>"Enter second number: "</str>))
+<fn>print</fn>(<str>"Sum ="</str>, <fn>add_numbers</fn>(<var>num1</var>, <var>num2</var>))</code></pre>
+      </div>
+      <div class="pane correct">
+        <span class="pane-tag correct">Step 2 — With error handling</span>
+        <pre><code><kw>def</kw> <fn>add_numbers</fn>(<var>a</var>, <var>b</var>):
+    <kw>return</kw> <var>a</var> <op>+</op> <var>b</var>
+
+<kw>try</kw>:
+    <var>num1</var> <op>=</op> <fn>int</fn>(<fn>input</fn>(<str>"Enter first number: "</str>))
+    <var>num2</var> <op>=</op> <fn>int</fn>(<fn>input</fn>(<str>"Enter second number: "</str>))
+    <fn>print</fn>(<str>"Sum ="</str>, <fn>add_numbers</fn>(<var>num1</var>, <var>num2</var>))
+<kw>except</kw> ValueError:
+    <fn>print</fn>(<str>"Invalid number"</str>)</code></pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Project 04 ── -->
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">04</span>
+      <h2>Project 4 — Square Calculator</h2>
+    </div>
+
+    <div class="code-compare">
+      <div class="pane correct">
+        <span class="pane-tag correct">Step 1 — Function</span>
+        <pre><code><kw>def</kw> <fn>square</fn>(<var>number</var>):
+    <kw>return</kw> <var>number</var> <op>*</op> <var>number</var>
+
+<var>num</var> <op>=</op> <fn>int</fn>(<fn>input</fn>(<str>"Enter number: "</str>))
+<fn>print</fn>(<fn>square</fn>(<var>num</var>))</code></pre>
+      </div>
+      <div class="pane correct">
+        <span class="pane-tag correct">Step 2 — With error handling</span>
+        <pre><code><kw>def</kw> <fn>square</fn>(<var>number</var>):
+    <kw>return</kw> <var>number</var> <op>*</op> <var>number</var>
+
+<kw>try</kw>:
+    <var>num</var> <op>=</op> <fn>int</fn>(<fn>input</fn>(<str>"Enter number: "</str>))
+    <fn>print</fn>(<fn>square</fn>(<var>num</var>))
+<kw>except</kw> ValueError:
+    <fn>print</fn>(<str>"Invalid number"</str>)</code></pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Project 05 ── -->
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">05</span>
+      <h2>Project 5 — Rectangle Area Calculator</h2>
+    </div>
+
+    <div class="code-compare">
+      <div class="pane correct">
+        <span class="pane-tag correct">Step 1 — Function</span>
+        <pre><code><kw>def</kw> <fn>calculate_area</fn>(<var>length</var>, <var>width</var>):
+    <kw>return</kw> <var>length</var> <op>*</op> <var>width</var>
+
+<var>length</var> <op>=</op> <fn>float</fn>(<fn>input</fn>(<str>"Enter length: "</str>))
+<var>width</var> <op>=</op> <fn>float</fn>(<fn>input</fn>(<str>"Enter width: "</str>))
+<fn>print</fn>(<str>"Area ="</str>, <fn>calculate_area</fn>(<var>length</var>, <var>width</var>))</code></pre>
+      </div>
+      <div class="pane correct">
+        <span class="pane-tag correct">Step 2 — With error handling</span>
+        <pre><code><kw>def</kw> <fn>calculate_area</fn>(<var>length</var>, <var>width</var>):
+    <kw>return</kw> <var>length</var> <op>*</op> <var>width</var>
+
+<kw>try</kw>:
+    <var>length</var> <op>=</op> <fn>float</fn>(<fn>input</fn>(<str>"Enter length: "</str>))
+    <var>width</var> <op>=</op> <fn>float</fn>(<fn>input</fn>(<str>"Enter width: "</str>))
+    <fn>print</fn>(<str>"Area ="</str>, <fn>calculate_area</fn>(<var>length</var>, <var>width</var>))
+<kw>except</kw> ValueError:
+    <fn>print</fn>(<str>"Please enter valid numbers"</str>)</code></pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Project 06 ── -->
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">06</span>
+      <h2>Project 6 — Even or Odd Checker</h2>
+    </div>
+
+    <div class="code-compare">
+      <div class="pane correct">
+        <span class="pane-tag correct">Step 1 — Function</span>
+        <pre><code><kw>def</kw> <fn>check_even_odd</fn>(<var>number</var>):
+    <kw>if</kw> <var>number</var> <op>%</op> <num>2</num> <op>==</op> <num>0</num>:
+        <fn>print</fn>(<str>"Even number"</str>)
+    <kw>else</kw>:
+        <fn>print</fn>(<str>"Odd number"</str>)
+
+<var>num</var> <op>=</op> <fn>int</fn>(<fn>input</fn>(<str>"Enter number: "</str>))
+<fn>check_even_odd</fn>(<var>num</var>)</code></pre>
+      </div>
+      <div class="pane correct">
+        <span class="pane-tag correct">Step 2 — With error handling</span>
+        <pre><code><kw>def</kw> <fn>check_even_odd</fn>(<var>number</var>):
+    <kw>if</kw> <var>number</var> <op>%</op> <num>2</num> <op>==</op> <num>0</num>:
+        <fn>print</fn>(<str>"Even number"</str>)
+    <kw>else</kw>:
+        <fn>print</fn>(<str>"Odd number"</str>)
+
+<kw>try</kw>:
+    <var>num</var> <op>=</op> <fn>int</fn>(<fn>input</fn>(<str>"Enter number: "</str>))
+    <fn>check_even_odd</fn>(<var>num</var>)
+<kw>except</kw> ValueError:
+    <fn>print</fn>(<str>"Enter valid integer"</str>)</code></pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Project 07 ── -->
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">07</span>
+      <h2>Project 7 — Grade Calculator</h2>
+    </div>
+
+    <div class="code-compare">
+      <div class="pane correct">
+        <span class="pane-tag correct">Step 1 — Function</span>
+        <pre><code><kw>def</kw> <fn>get_grade</fn>(<var>mark</var>):
+    <kw>if</kw> <var>mark</var> <op>&gt;=</op> <num>75</num>:
+        <kw>return</kw> <str>"A"</str>
+    <kw>elif</kw> <var>mark</var> <op>&gt;=</op> <num>65</num>:
+        <kw>return</kw> <str>"B"</str>
+    <kw>elif</kw> <var>mark</var> <op>&gt;=</op> <num>50</num>:
+        <kw>return</kw> <str>"C"</str>
+    <kw>else</kw>:
+        <kw>return</kw> <str>"F"</str>
+
+<var>mark</var> <op>=</op> <fn>int</fn>(<fn>input</fn>(<str>"Enter mark: "</str>))
+<fn>print</fn>(<str>"Grade ="</str>, <fn>get_grade</fn>(<var>mark</var>))</code></pre>
+      </div>
+      <div class="pane correct">
+        <span class="pane-tag correct">Step 2 — With error handling</span>
+        <pre><code><kw>def</kw> <fn>get_grade</fn>(<var>mark</var>):
+    <kw>if</kw> <var>mark</var> <op>&gt;=</op> <num>75</num>:
+        <kw>return</kw> <str>"A"</str>
+    <kw>elif</kw> <var>mark</var> <op>&gt;=</op> <num>65</num>:
+        <kw>return</kw> <str>"B"</str>
+    <kw>elif</kw> <var>mark</var> <op>&gt;=</op> <num>50</num>:
+        <kw>return</kw> <str>"C"</str>
+    <kw>else</kw>:
+        <kw>return</kw> <str>"F"</str>
+
+<kw>try</kw>:
+    <var>mark</var> <op>=</op> <fn>int</fn>(<fn>input</fn>(<str>"Enter mark: "</str>))
+    <fn>print</fn>(<str>"Grade ="</str>, <fn>get_grade</fn>(<var>mark</var>))
+<kw>except</kw> ValueError:
+    <fn>print</fn>(<str>"Invalid mark"</str>)</code></pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Project 08 ── -->
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">08</span>
+      <h2>Project 8 — Student Average Calculator</h2>
+    </div>
+
+    <div class="code-compare">
+      <div class="pane correct">
+        <span class="pane-tag correct">Step 1 — Function</span>
+        <pre><code><kw>def</kw> <fn>calculate_average</fn>(<var>a</var>, <var>b</var>, <var>c</var>):
+    <kw>return</kw> (<var>a</var> <op>+</op> <var>b</var> <op>+</op> <var>c</var>) <op>/</op> <num>3</num>
+
+<var>m1</var> <op>=</op> <fn>float</fn>(<fn>input</fn>(<str>"Enter mark 1: "</str>))
+<var>m2</var> <op>=</op> <fn>float</fn>(<fn>input</fn>(<str>"Enter mark 2: "</str>))
+<var>m3</var> <op>=</op> <fn>float</fn>(<fn>input</fn>(<str>"Enter mark 3: "</str>))
+<fn>print</fn>(<str>"Average ="</str>, <fn>calculate_average</fn>(<var>m1</var>, <var>m2</var>, <var>m3</var>))</code></pre>
+      </div>
+      <div class="pane correct">
+        <span class="pane-tag correct">Step 2 — With error handling</span>
+        <pre><code><kw>def</kw> <fn>calculate_average</fn>(<var>a</var>, <var>b</var>, <var>c</var>):
+    <kw>return</kw> (<var>a</var> <op>+</op> <var>b</var> <op>+</op> <var>c</var>) <op>/</op> <num>3</num>
+
+<kw>try</kw>:
+    <var>m1</var> <op>=</op> <fn>float</fn>(<fn>input</fn>(<str>"Enter mark 1: "</str>))
+    <var>m2</var> <op>=</op> <fn>float</fn>(<fn>input</fn>(<str>"Enter mark 2: "</str>))
+    <var>m3</var> <op>=</op> <fn>float</fn>(<fn>input</fn>(<str>"Enter mark 3: "</str>))
+    <fn>print</fn>(<str>"Average ="</str>, <fn>calculate_average</fn>(<var>m1</var>, <var>m2</var>, <var>m3</var>))
+<kw>except</kw> ValueError:
+    <fn>print</fn>(<str>"Please enter valid marks"</str>)</code></pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Project 09 ── -->
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">09</span>
+      <h2>Project 9 — Largest Number Finder</h2>
+    </div>
+    <p>Uses the built-in <code>max()</code> function to find the largest value.</p>
+
+    <div class="code-compare">
+      <div class="pane correct">
+        <span class="pane-tag correct">Step 1 — Function</span>
+        <pre><code><kw>def</kw> <fn>find_max</fn>(<var>a</var>, <var>b</var>, <var>c</var>):
+    <kw>return</kw> <fn>max</fn>(<var>a</var>, <var>b</var>, <var>c</var>)
+
+<var>num1</var> <op>=</op> <fn>int</fn>(<fn>input</fn>(<str>"Enter first number: "</str>))
+<var>num2</var> <op>=</op> <fn>int</fn>(<fn>input</fn>(<str>"Enter second number: "</str>))
+<var>num3</var> <op>=</op> <fn>int</fn>(<fn>input</fn>(<str>"Enter third number: "</str>))
+<fn>print</fn>(<str>"Largest ="</str>, <fn>find_max</fn>(<var>num1</var>, <var>num2</var>, <var>num3</var>))</code></pre>
+      </div>
+      <div class="pane correct">
+        <span class="pane-tag correct">Step 2 — With error handling</span>
+        <pre><code><kw>def</kw> <fn>find_max</fn>(<var>a</var>, <var>b</var>, <var>c</var>):
+    <kw>return</kw> <fn>max</fn>(<var>a</var>, <var>b</var>, <var>c</var>)
+
+<kw>try</kw>:
+    <var>num1</var> <op>=</op> <fn>int</fn>(<fn>input</fn>(<str>"Enter first number: "</str>))
+    <var>num2</var> <op>=</op> <fn>int</fn>(<fn>input</fn>(<str>"Enter second number: "</str>))
+    <var>num3</var> <op>=</op> <fn>int</fn>(<fn>input</fn>(<str>"Enter third number: "</str>))
+    <fn>print</fn>(<str>"Largest ="</str>, <fn>find_max</fn>(<var>num1</var>, <var>num2</var>, <var>num3</var>))
+<kw>except</kw> ValueError:
+    <fn>print</fn>(<str>"Please enter valid integers"</str>)</code></pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Project 10 ── -->
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">10</span>
+      <h2>Project 10 — Temperature Converter</h2>
+    </div>
+    <p>Convert Celsius to Fahrenheit using the formula: <code>(celsius × 9/5) + 32</code></p>
+
+    <div class="code-compare">
+      <div class="pane correct">
+        <span class="pane-tag correct">Step 1 — Function</span>
+        <pre><code><kw>def</kw> <fn>celsius_to_fahrenheit</fn>(<var>celsius</var>):
+    <kw>return</kw> (<var>celsius</var> <op>*</op> <num>9</num><op>/</op><num>5</num>) <op>+</op> <num>32</num>
+
+<var>temp</var> <op>=</op> <fn>float</fn>(<fn>input</fn>(<str>"Enter temperature in Celsius: "</str>))
+<var>result</var> <op>=</op> <fn>celsius_to_fahrenheit</fn>(<var>temp</var>)
+<fn>print</fn>(<str>"Fahrenheit ="</str>, <var>result</var>)</code></pre>
+      </div>
+      <div class="pane correct">
+        <span class="pane-tag correct">Step 2 — With error handling</span>
+        <pre><code><kw>def</kw> <fn>celsius_to_fahrenheit</fn>(<var>celsius</var>):
+    <kw>return</kw> (<var>celsius</var> <op>*</op> <num>9</num><op>/</op><num>5</num>) <op>+</op> <num>32</num>
+
+<kw>try</kw>:
+    <var>temp</var> <op>=</op> <fn>float</fn>(<fn>input</fn>(<str>"Enter temperature in Celsius: "</str>))
+    <var>result</var> <op>=</op> <fn>celsius_to_fahrenheit</fn>(<var>temp</var>)
+    <fn>print</fn>(<str>"Fahrenheit ="</str>, <var>result</var>)
+<kw>except</kw> ValueError:
+    <fn>print</fn>(<str>"Please enter a valid temperature"</str>)</code></pre>
+      </div>
+    </div>
+
+    <div class="output-block">
+      <div class="out-label">Example — Input: 0</div>
+      Fahrenheit = 32.0
+    </div>
+  </div>
+
+  <!-- ── Project 11 ── -->
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">11</span>
+      <h2>Project 11 — Circle Area Calculator</h2>
+    </div>
+    <p>Calculate the area of a circle using <code>math.pi</code> — demonstrating module importing.</p>
+
+    <div class="code-compare">
+      <div class="pane correct">
+        <span class="pane-tag correct">Step 1 — Function</span>
+        <pre><code><kw>import</kw> math
+
+<kw>def</kw> <fn>calculate_circle_area</fn>(<var>radius</var>):
+    <kw>return</kw> math.pi <op>*</op> <var>radius</var> <op>*</op> <var>radius</var>
+
+<var>radius</var> <op>=</op> <fn>float</fn>(<fn>input</fn>(<str>"Enter radius: "</str>))
+<fn>print</fn>(<str>"Area ="</str>, <fn>calculate_circle_area</fn>(<var>radius</var>))</code></pre>
+      </div>
+      <div class="pane correct">
+        <span class="pane-tag correct">Step 2 — With error handling</span>
+        <pre><code><kw>import</kw> math
+
+<kw>def</kw> <fn>calculate_circle_area</fn>(<var>radius</var>):
+    <kw>return</kw> math.pi <op>*</op> <var>radius</var> <op>*</op> <var>radius</var>
+
+<kw>try</kw>:
+    <var>radius</var> <op>=</op> <fn>float</fn>(<fn>input</fn>(<str>"Enter radius: "</str>))
+    <fn>print</fn>(<str>"Area ="</str>, <fn>calculate_circle_area</fn>(<var>radius</var>))
+<kw>except</kw> ValueError:
+    <fn>print</fn>(<str>"Invalid radius"</str>)</code></pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Project 12 ── -->
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">12</span>
+      <h2>Project 12 — Random Number Generator</h2>
+    </div>
+    <p>Generate a random number between 1 and 100 using <code>random.randint()</code>.</p>
+
+    <div class="code-compare">
+      <div class="pane correct">
+        <span class="pane-tag correct">Step 1 — Function</span>
+        <pre><code><kw>import</kw> random
+
+<kw>def</kw> <fn>generate_number</fn>():
+    <kw>return</kw> random.<fn>randint</fn>(<num>1</num>, <num>100</num>)
+
+<fn>print</fn>(<str>"Random number ="</str>, <fn>generate_number</fn>())</code></pre>
+      </div>
+      <div class="pane correct">
+        <span class="pane-tag correct">Step 2 — With error handling</span>
+        <pre><code><kw>import</kw> random
+
+<kw>def</kw> <fn>generate_number</fn>():
+    <kw>return</kw> random.<fn>randint</fn>(<num>1</num>, <num>100</num>)
+
+<kw>try</kw>:
+    <fn>print</fn>(<str>"Random number ="</str>, <fn>generate_number</fn>())
+<kw>except</kw>:
+    <fn>print</fn>(<str>"Something went wrong"</str>)</code></pre>
+      </div>
+    </div>
+    <div class="callout note"><strong>Note</strong> — Not every program needs heavy exception handling. Since there is no user numeric input here, improvement is minimal.</div>
+  </div>
+
+  <!-- ── Project 13 ── -->
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">13</span>
+      <h2>Project 13 — Calculator Program</h2>
+    </div>
+    <p>A simple calculator using four separate functions — demonstrating modular, maintainable code.</p>
+
+    <div class="code-block">
+      <span class="code-filename">Step 1 — Function solution</span>
+      <pre><code><kw>def</kw> <fn>add</fn>(<var>a</var>, <var>b</var>):        <kw>return</kw> <var>a</var> <op>+</op> <var>b</var>
+<kw>def</kw> <fn>subtract</fn>(<var>a</var>, <var>b</var>):   <kw>return</kw> <var>a</var> <op>-</op> <var>b</var>
+<kw>def</kw> <fn>multiply</fn>(<var>a</var>, <var>b</var>):   <kw>return</kw> <var>a</var> <op>*</op> <var>b</var>
+<kw>def</kw> <fn>divide</fn>(<var>a</var>, <var>b</var>):     <kw>return</kw> <var>a</var> <op>/</op> <var>b</var>
+
+<var>num1</var> <op>=</op> <fn>float</fn>(<fn>input</fn>(<str>"Enter first number: "</str>))
+<var>num2</var> <op>=</op> <fn>float</fn>(<fn>input</fn>(<str>"Enter second number: "</str>))
+<var>choice</var> <op>=</op> <fn>input</fn>(<str>"Choose (+,-,*,/): "</str>)
+
+<kw>if</kw> <var>choice</var> <op>==</op> <str>"+"</str>:    <fn>print</fn>(<fn>add</fn>(<var>num1</var>, <var>num2</var>))
+<kw>elif</kw> <var>choice</var> <op>==</op> <str>"-"</str>:  <fn>print</fn>(<fn>subtract</fn>(<var>num1</var>, <var>num2</var>))
+<kw>elif</kw> <var>choice</var> <op>==</op> <str>"*"</str>:  <fn>print</fn>(<fn>multiply</fn>(<var>num1</var>, <var>num2</var>))
+<kw>elif</kw> <var>choice</var> <op>==</op> <str>"/"</str>:  <fn>print</fn>(<fn>divide</fn>(<var>num1</var>, <var>num2</var>))
+<kw>else</kw>:             <fn>print</fn>(<str>"Invalid choice"</str>)</code></pre>
+    </div>
+
+    <div class="code-block">
+      <span class="code-filename">Step 2 — With error handling (handles invalid numbers and division by zero)</span>
+      <pre><code><kw>def</kw> <fn>add</fn>(<var>a</var>, <var>b</var>):        <kw>return</kw> <var>a</var> <op>+</op> <var>b</var>
+<kw>def</kw> <fn>subtract</fn>(<var>a</var>, <var>b</var>):   <kw>return</kw> <var>a</var> <op>-</op> <var>b</var>
+<kw>def</kw> <fn>multiply</fn>(<var>a</var>, <var>b</var>):   <kw>return</kw> <var>a</var> <op>*</op> <var>b</var>
+<kw>def</kw> <fn>divide</fn>(<var>a</var>, <var>b</var>):     <kw>return</kw> <var>a</var> <op>/</op> <var>b</var>
+
+<kw>try</kw>:
+    <var>num1</var> <op>=</op> <fn>float</fn>(<fn>input</fn>(<str>"Enter first number: "</str>))
+    <var>num2</var> <op>=</op> <fn>float</fn>(<fn>input</fn>(<str>"Enter second number: "</str>))
+    <var>choice</var> <op>=</op> <fn>input</fn>(<str>"Choose (+,-,*,/): "</str>)
+
+    <kw>if</kw> <var>choice</var> <op>==</op> <str>"+"</str>:    <fn>print</fn>(<fn>add</fn>(<var>num1</var>, <var>num2</var>))
+    <kw>elif</kw> <var>choice</var> <op>==</op> <str>"-"</str>:  <fn>print</fn>(<fn>subtract</fn>(<var>num1</var>, <var>num2</var>))
+    <kw>elif</kw> <var>choice</var> <op>==</op> <str>"*"</str>:  <fn>print</fn>(<fn>multiply</fn>(<var>num1</var>, <var>num2</var>))
+    <kw>elif</kw> <var>choice</var> <op>==</op> <str>"/"</str>:  <fn>print</fn>(<fn>divide</fn>(<var>num1</var>, <var>num2</var>))
+    <kw>else</kw>:             <fn>print</fn>(<str>"Invalid choice"</str>)
+<kw>except</kw> ValueError:
+    <fn>print</fn>(<str>"Invalid number"</str>)
+<kw>except</kw> ZeroDivisionError:
+    <fn>print</fn>(<str>"Cannot divide by zero"</str>)</code></pre>
+    </div>
+  </div>
+
+  <!-- ── Project 14 ── -->
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">14</span>
+      <h2>Project 14 — Student Result System</h2>
+    </div>
+    <p>Calculate total, average, and grade using three cooperating functions.</p>
+
+    <div class="code-block">
+      <span class="code-filename">Step 1 — Function solution</span>
+      <pre><code><kw>def</kw> <fn>calculate_total</fn>(<var>a</var>, <var>b</var>, <var>c</var>):
+    <kw>return</kw> <var>a</var> <op>+</op> <var>b</var> <op>+</op> <var>c</var>
+
+<kw>def</kw> <fn>calculate_average</fn>(<var>total</var>):
+    <kw>return</kw> <var>total</var> <op>/</op> <num>3</num>
+
+<kw>def</kw> <fn>get_grade</fn>(<var>avg</var>):
+    <kw>if</kw> <var>avg</var> <op>&gt;=</op> <num>75</num>:   <kw>return</kw> <str>"A"</str>
+    <kw>elif</kw> <var>avg</var> <op>&gt;=</op> <num>65</num>: <kw>return</kw> <str>"B"</str>
+    <kw>elif</kw> <var>avg</var> <op>&gt;=</op> <num>50</num>: <kw>return</kw> <str>"C"</str>
+    <kw>else</kw>:            <kw>return</kw> <str>"F"</str>
+
+<var>name</var> <op>=</op> <fn>input</fn>(<str>"Enter student name: "</str>)
+<var>m1</var> <op>=</op> <fn>int</fn>(<fn>input</fn>(<str>"Enter mark 1: "</str>))
+<var>m2</var> <op>=</op> <fn>int</fn>(<fn>input</fn>(<str>"Enter mark 2: "</str>))
+<var>m3</var> <op>=</op> <fn>int</fn>(<fn>input</fn>(<str>"Enter mark 3: "</str>))
+
+<var>total</var> <op>=</op> <fn>calculate_total</fn>(<var>m1</var>, <var>m2</var>, <var>m3</var>)
+<var>average</var> <op>=</op> <fn>calculate_average</fn>(<var>total</var>)
+<var>grade</var> <op>=</op> <fn>get_grade</fn>(<var>average</var>)
+
+<fn>print</fn>(<str>"Student:"</str>, <var>name</var>)
+<fn>print</fn>(<str>"Total:"</str>, <var>total</var>)
+<fn>print</fn>(<str>"Average:"</str>, <var>average</var>)
+<fn>print</fn>(<str>"Grade:"</str>, <var>grade</var>)</code></pre>
+    </div>
+
+    <div class="code-block">
+      <span class="code-filename">Step 2 — With error handling</span>
+      <pre><code><kw>try</kw>:
+    <var>name</var> <op>=</op> <fn>input</fn>(<str>"Enter student name: "</str>)
+    <var>m1</var> <op>=</op> <fn>int</fn>(<fn>input</fn>(<str>"Enter mark 1: "</str>))
+    <var>m2</var> <op>=</op> <fn>int</fn>(<fn>input</fn>(<str>"Enter mark 2: "</str>))
+    <var>m3</var> <op>=</op> <fn>int</fn>(<fn>input</fn>(<str>"Enter mark 3: "</str>))
+
+    <var>total</var> <op>=</op> <fn>calculate_total</fn>(<var>m1</var>, <var>m2</var>, <var>m3</var>)
+    <var>average</var> <op>=</op> <fn>calculate_average</fn>(<var>total</var>)
+    <var>grade</var> <op>=</op> <fn>get_grade</fn>(<var>average</var>)
+
+    <fn>print</fn>(<str>"Student:"</str>, <var>name</var>)
+    <fn>print</fn>(<str>"Total:"</str>, <var>total</var>)
+    <fn>print</fn>(<str>"Average:"</str>, <var>average</var>)
+    <fn>print</fn>(<str>"Grade:"</str>, <var>grade</var>)
+<kw>except</kw> ValueError:
+    <fn>print</fn>(<str>"Please enter valid marks"</str>)</code></pre>
+    </div>
+  </div>
+
+  <!-- ── Project 15 ── -->
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">15</span>
+      <h2>Project 15 — ATM Simulator</h2>
+    </div>
+    <p>A simple ATM with a menu loop, using a global variable for balance.</p>
+
+    <div class="code-block">
+      <span class="code-filename">Step 1 — Function solution</span>
+      <pre><code><var>balance</var> <op>=</op> <num>10000</num>
+
+<kw>def</kw> <fn>check_balance</fn>():
+    <fn>print</fn>(<str>"Balance ="</str>, <var>balance</var>)
+
+<kw>def</kw> <fn>deposit</fn>(<var>amount</var>):
+    <kw>global</kw> <var>balance</var>
+    <var>balance</var> <op>+=</op> <var>amount</var>
+    <fn>print</fn>(<str>"Deposit successful"</str>)
+
+<kw>def</kw> <fn>withdraw</fn>(<var>amount</var>):
+    <kw>global</kw> <var>balance</var>
+    <var>balance</var> <op>-=</op> <var>amount</var>
+    <fn>print</fn>(<str>"Withdrawal successful"</str>)
+
+<kw>while</kw> <kw>True</kw>:
+    <fn>print</fn>(<str>"1. Check Balance"</str>)
+    <fn>print</fn>(<str>"2. Deposit"</str>)
+    <fn>print</fn>(<str>"3. Withdraw"</str>)
+    <fn>print</fn>(<str>"4. Exit"</str>)
+    <var>choice</var> <op>=</op> <fn>input</fn>(<str>"Enter choice: "</str>)
+
+    <kw>if</kw> <var>choice</var> <op>==</op> <str>"1"</str>:    <fn>check_balance</fn>()
+    <kw>elif</kw> <var>choice</var> <op>==</op> <str>"2"</str>:
+        <var>amount</var> <op>=</op> <fn>float</fn>(<fn>input</fn>(<str>"Enter deposit amount: "</str>))
+        <fn>deposit</fn>(<var>amount</var>)
+    <kw>elif</kw> <var>choice</var> <op>==</op> <str>"3"</str>:
+        <var>amount</var> <op>=</op> <fn>float</fn>(<fn>input</fn>(<str>"Enter withdraw amount: "</str>))
+        <fn>withdraw</fn>(<var>amount</var>)
+    <kw>elif</kw> <var>choice</var> <op>==</op> <str>"4"</str>:
+        <fn>print</fn>(<str>"Thank you"</str>)
+        <kw>break</kw>
+    <kw>else</kw>:
+        <fn>print</fn>(<str>"Invalid choice"</str>)</code></pre>
+    </div>
+
+    <div class="callout warn">
+      <strong>Problem in basic version</strong>
+      The user can withdraw more than the available balance, and entering invalid numbers will crash the program. Both issues are fixed in Step 2.
+    </div>
+
+    <div class="code-block">
+      <span class="code-filename">Step 2 — Enhanced (handles overdraw and invalid input)</span>
+      <pre><code><var>balance</var> <op>=</op> <num>10000</num>
+
+<kw>def</kw> <fn>check_balance</fn>():
+    <fn>print</fn>(<str>"Balance ="</str>, <var>balance</var>)
+
+<kw>def</kw> <fn>deposit</fn>(<var>amount</var>):
+    <kw>global</kw> <var>balance</var>
+    <var>balance</var> <op>+=</op> <var>amount</var>
+    <fn>print</fn>(<str>"Deposit successful"</str>)
+
+<kw>def</kw> <fn>withdraw</fn>(<var>amount</var>):
+    <kw>global</kw> <var>balance</var>
+    <kw>if</kw> <var>amount</var> <op>&gt;</op> <var>balance</var>:
+        <fn>print</fn>(<str>"Insufficient balance"</str>)
+    <kw>else</kw>:
+        <var>balance</var> <op>-=</op> <var>amount</var>
+        <fn>print</fn>(<str>"Withdrawal successful"</str>)
+
+<kw>while</kw> <kw>True</kw>:
+    <kw>try</kw>:
+        <fn>print</fn>(<str>"1. Check Balance"</str>)
+        <fn>print</fn>(<str>"2. Deposit"</str>)
+        <fn>print</fn>(<str>"3. Withdraw"</str>)
+        <fn>print</fn>(<str>"4. Exit"</str>)
+        <var>choice</var> <op>=</op> <fn>input</fn>(<str>"Enter choice: "</str>)
+
+        <kw>if</kw> <var>choice</var> <op>==</op> <str>"1"</str>:    <fn>check_balance</fn>()
+        <kw>elif</kw> <var>choice</var> <op>==</op> <str>"2"</str>:
+            <var>amount</var> <op>=</op> <fn>float</fn>(<fn>input</fn>(<str>"Enter deposit amount: "</str>))
+            <fn>deposit</fn>(<var>amount</var>)
+        <kw>elif</kw> <var>choice</var> <op>==</op> <str>"3"</str>:
+            <var>amount</var> <op>=</op> <fn>float</fn>(<fn>input</fn>(<str>"Enter withdraw amount: "</str>))
+            <fn>withdraw</fn>(<var>amount</var>)
+        <kw>elif</kw> <var>choice</var> <op>==</op> <str>"4"</str>:
+            <fn>print</fn>(<str>"Thank you"</str>)
+            <kw>break</kw>
+        <kw>else</kw>:
+            <fn>print</fn>(<str>"Invalid choice"</str>)
+    <kw>except</kw> ValueError:
+        <fn>print</fn>(<str>"Please enter valid amount"</str>)</code></pre>
+    </div>
+    <div class="callout note"><strong>Improvements</strong> — now handles invalid amounts, overdrawing, and keeps the menu loop running safely.</div>
+  </div>
+
+  <!-- ── Project 16 ── -->
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">16</span>
+      <h2>Project 16 — Number Guessing Game</h2>
+    </div>
+    <p>Generate a random number between 1 and 10 and ask the user to guess.</p>
+
+    <div class="code-compare">
+      <div class="pane correct">
+        <span class="pane-tag correct">Step 1 — Function</span>
+        <pre><code><kw>import</kw> random
+
+<kw>def</kw> <fn>play_game</fn>():
+    <var>number</var> <op>=</op> random.<fn>randint</fn>(<num>1</num>, <num>10</num>)
+    <var>guess</var> <op>=</op> <fn>int</fn>(<fn>input</fn>(<str>"Enter guess: "</str>))
+    <kw>if</kw> <var>guess</var> <op>==</op> <var>number</var>:
+        <fn>print</fn>(<str>"Correct"</str>)
+    <kw>elif</kw> <var>guess</var> <op>&gt;</op> <var>number</var>:
+        <fn>print</fn>(<str>"Too high"</str>)
+    <kw>else</kw>:
+        <fn>print</fn>(<str>"Too low"</str>)
+
+<fn>play_game</fn>()</code></pre>
+      </div>
+      <div class="pane correct">
+        <span class="pane-tag correct">Step 2 — With error handling</span>
+        <pre><code><kw>import</kw> random
+
+<kw>def</kw> <fn>play_game</fn>():
+    <var>number</var> <op>=</op> random.<fn>randint</fn>(<num>1</num>, <num>10</num>)
+    <kw>try</kw>:
+        <var>guess</var> <op>=</op> <fn>int</fn>(<fn>input</fn>(<str>"Enter guess: "</str>))
+        <kw>if</kw> <var>guess</var> <op>==</op> <var>number</var>:
+            <fn>print</fn>(<str>"Correct"</str>)
+        <kw>elif</kw> <var>guess</var> <op>&gt;</op> <var>number</var>:
+            <fn>print</fn>(<str>"Too high"</str>)
+        <kw>else</kw>:
+            <fn>print</fn>(<str>"Too low"</str>)
+    <kw>except</kw> ValueError:
+        <fn>print</fn>(<str>"Enter valid integer"</str>)
+
+<fn>play_game</fn>()</code></pre>
+      </div>
+    </div>
+    <div class="callout note"><strong>Improvement</strong> — entering text like <code>hello</code> no longer crashes the program.</div>
+  </div>
+
+  <!-- ── Final Summary ── -->
+  <div class="summary">
+    <h2>Final Summary</h2>
+    <ul>
+      <li><strong>Functions</strong> — you defined functions, used parameters and return values, and built modular programs where functions call each other</li>
+      <li><strong>Modules</strong> — you used <code>math</code> for precise calculations and <code>random</code> for game-style programs</li>
+      <li><strong>Scope</strong> — you practiced global variables in the ATM simulator, understanding when and why to use the <code>global</code> keyword</li>
+      <li><strong>Error handling</strong> — you added <code>try</code> / <code>except</code> blocks to handle <code>ValueError</code>, <code>ZeroDivisionError</code>, and other issues, and learned to validate user input before processing</li>
+      <li><strong>Programming mindset</strong> — build it → make it reliable → refine the user experience. This is how real software is written.</li>
+    </ul>
+  </div>
+
+  <div class="next-lesson" style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); border-top: 3px solid #4f8ef7;">
+    <div>
+      <div class="nl-label" style="color: #a0b4d0;">Course complete</div>
+      <div class="nl-title" style="color: #ffffff;">Congratulations! You have completed the core beginner Python curriculum. Think about what you want to do with Python next and start exploring its libraries. Good luck!</div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

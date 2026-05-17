@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Python String Formatting and Comments — Lesson 16</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="lesson-styles.css"/>
+</head>
+<body>
+<div class="page">
+
+  <div class="topbar">
+    <span class="topbar-course">Python Programming</span>
+    <span class="topbar-lesson">Lesson 16 of 20</span>
+  </div>
+
+  <div class="page-header">
+    <div class="label">Lesson 16</div>
+    <h1>Python String Formatting and Comments</h1>
+    <p class="intro">
+      In previous lessons we learned variables, input/output, operators, conditionals, data structures, and loops. Now we learn strings, string formatting, and comments — tools that make programs more readable and professional.
+    </p>
+  </div>
+
+  <div class="objectives">
+    <h2>By the end of this lesson you will be able to</h2>
+    <ul>
+      <li>Understand the concept of strings in Python with its practical uses</li>
+      <li>Format strings with different string formatting methods in Python</li>
+      <li>Access string characters using indexing and slicing</li>
+      <li>Write comments to improve code readability</li>
+    </ul>
+  </div>
+
+  <!-- ── Section 01 ── -->
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">01</span>
+      <h2>Basic String Operations</h2>
+    </div>
+    <p>Before learning string formatting, we need to understand one important fact: a string is made of individual characters.</p>
+
+    <div class="code-block">
+      <pre><code><var>name</var> <op>=</op> <str>"Nimal"</str></code></pre>
+    </div>
+
+    <p>This string contains 5 characters: <code>N i m a l</code></p>
+    <p>Python gives each character a position number called an <strong>index</strong>.</p>
+  </div>
+
+  <!-- ── Section 02 ── -->
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">02</span>
+      <h2>String Indexing</h2>
+    </div>
+    <p>The index starts from <strong>0</strong>.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Character</th><th>N</th><th>i</th><th>m</th><th>a</th><th>l</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Index</td><td>0</td><td>1</td><td>2</td><td>3</td><td>4</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>We can access characters using square brackets:</p>
+
+    <div class="code-block">
+      <span class="code-filename">indexing.py</span>
+      <pre><code><var>name</var> <op>=</op> <str>"Nimal"</str>
+<fn>print</fn>(<var>name</var>[<num>0</num>])   <cmt># first character</cmt>
+<fn>print</fn>(<var>name</var>[<num>2</num>])   <cmt># third character</cmt></code></pre>
+    </div>
+
+    <div class="output-block">
+      <div class="out-label">Output</div>
+      N<br>m
+    </div>
+
+    <div class="callout note">
+      <strong>Remember</strong>
+      Python starts counting from 0, not 1. So <code>name[0]</code> is the first letter and <code>name[1]</code> is the second.
+    </div>
+
+    <p class="mt"><strong>Negative indexing</strong> — Python can also count from the end:</p>
+
+    <div class="code-block">
+      <pre><code><fn>print</fn>(<var>name</var>[<op>-</op><num>1</num>])   <cmt># last character</cmt></code></pre>
+    </div>
+
+    <div class="output-block">
+      <div class="out-label">Output</div>
+      l
+    </div>
+  </div>
+
+  <!-- ── Section 03 ── -->
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">03</span>
+      <h2>String Slicing</h2>
+    </div>
+    <p>Slicing means taking part of a string.</p>
+
+    <div class="code-block">
+      <span class="code-filename">syntax</span>
+      <pre><code>string[start:end]</code></pre>
+    </div>
+
+    <p>Example — start at index 0, stop before index 3:</p>
+
+    <div class="code-block">
+      <pre><code><var>name</var> <op>=</op> <str>"Nimal"</str>
+<fn>print</fn>(<var>name</var>[<num>0</num>:<num>3</num>])   <cmt># Nim</cmt>
+<fn>print</fn>(<var>name</var>[<num>2</num>:<num>5</num>])   <cmt># mal</cmt></code></pre>
+    </div>
+
+    <div class="output-block">
+      <div class="out-label">Output</div>
+      Nim<br>mal
+    </div>
+
+    <p class="mt">Useful shortcut — omit the start to begin from the beginning:</p>
+
+    <div class="code-block">
+      <pre><code><fn>print</fn>(<var>name</var>[:<num>3</num>])   <cmt># Nim — start from beginning, stop before 3</cmt></code></pre>
+    </div>
+  </div>
+
+  <!-- ── Section 04 ── -->
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">04</span>
+      <h2>String Length</h2>
+    </div>
+    <p>Use <code>len()</code> to count characters:</p>
+
+    <div class="code-block">
+      <pre><code><var>name</var> <op>=</op> <str>"Nimal"</str>
+<fn>print</fn>(<fn>len</fn>(<var>name</var>))</code></pre>
+    </div>
+
+    <div class="output-block">
+      <div class="out-label">Output</div>
+      5
+    </div>
+
+    <div class="mistake">
+      <div class="mistake-title">Mistake 1 — Starting from 1</div>
+      <div class="mistake-body">
+        <p><code>name[1]</code> is not the first letter — it is the second. Index 0 is always the first character.</p>
+      </div>
+    </div>
+
+    <div class="mistake">
+      <div class="mistake-title">Mistake 2 — Invalid index</div>
+      <div class="mistake-body">
+        <p><code>print(name[10])</code> gives an error because index 10 does not exist in a 5-character string.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Section 05 — Part 2 intro ── -->
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">05</span>
+      <h2>What Is String Formatting?</h2>
+    </div>
+    <p>String formatting means inserting variable values into text. Instead of printing separately:</p>
+
+    <div class="code-block">
+      <pre><code><var>name</var> <op>=</op> <str>"Nimal"</str>
+<var>age</var> <op>=</op> <num>20</num>
+<fn>print</fn>(<var>name</var>)
+<fn>print</fn>(<var>age</var>)</code></pre>
+    </div>
+
+    <p>We can combine them into one readable sentence:</p>
+
+    <div class="output-block">
+      <div class="out-label">Goal</div>
+      My name is Nimal and I am 20 years old.
+    </div>
+
+    <p class="mt">Python gives us four ways to do this.</p>
+  </div>
+
+  <!-- ── Section 06 ── -->
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">06</span>
+      <h2>Method 1 — Using Commas</h2>
+    </div>
+
+    <div class="code-block">
+      <span class="code-filename">method1.py</span>
+      <pre><code><var>name</var> <op>=</op> <str>"Nimal"</str>
+<var>age</var> <op>=</op> <num>20</num>
+<fn>print</fn>(<str>"My name is"</str>, <var>name</var>, <str>"and I am"</str>, <var>age</var>, <str>"years old."</str>)</code></pre>
+    </div>
+
+    <div class="output-block">
+      <div class="out-label">Output</div>
+      My name is Nimal and I am 20 years old.
+    </div>
+  </div>
+
+  <!-- ── Section 07 ── -->
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">07</span>
+      <h2>Method 2 — String Concatenation Using <code>+</code></h2>
+    </div>
+
+    <div class="code-block">
+      <span class="code-filename">method2.py</span>
+      <pre><code><var>name</var> <op>=</op> <str>"Kamal"</str>
+<fn>print</fn>(<str>"Hello "</str> <op>+</op> <var>name</var>)</code></pre>
+    </div>
+
+    <div class="output-block">
+      <div class="out-label">Output</div>
+      Hello Kamal
+    </div>
+
+    <div class="callout warn">
+      <strong>Numbers need str() first</strong>
+      You cannot concatenate a string and a number directly. Convert the number first:
+      <div class="code-block mt-sm">
+        <pre><code><var>age</var> <op>=</op> <num>25</num>
+<fn>print</fn>(<str>"Age: "</str> <op>+</op> <fn>str</fn>(<var>age</var>))</code></pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Section 08 ── -->
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">08</span>
+      <h2>Method 3 — Old-Style Formatting Using <code>%</code></h2>
+    </div>
+    <p>This is an older formatting method. Placeholders inside the string are replaced by values.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Placeholder</th><th>Meaning</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><code>%d</code></td><td>integer</td></tr>
+          <tr><td><code>%f</code></td><td>float</td></tr>
+          <tr><td><code>%s</code></td><td>string</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="code-block">
+      <span class="code-filename">method3.py</span>
+      <pre><code><var>age</var> <op>=</op> <num>20</num>
+<fn>print</fn>(<str>"You are %d years old"</str> <op>%</op> <var>age</var>)
+
+<var>name</var> <op>=</op> <str>"Sunil"</str>
+<fn>print</fn>(<str>"My name is %s"</str> <op>%</op> <var>name</var>)
+
+<var>salary</var> <op>=</op> <num>25000.50</num>
+<fn>print</fn>(<str>"Salary = %.2f"</str> <op>%</op> <var>salary</var>)   <cmt># limit to 2 decimal places</cmt>
+
+<var>name</var> <op>=</op> <str>"Kamal"</str>
+<var>age</var> <op>=</op> <num>30</num>
+<fn>print</fn>(<str>"%s is %d years old"</str> <op>%</op> (<var>name</var>, <var>age</var>))</code></pre>
+    </div>
+
+    <div class="output-block">
+      <div class="out-label">Output</div>
+      You are 20 years old<br>My name is Sunil<br>Salary = 25000.50<br>Kamal is 30 years old
+    </div>
+
+    <div class="callout note">
+      <strong>Why % formatting is less preferred now</strong>
+      Although useful, it is an older style. Modern Python usually prefers f-strings.
+    </div>
+  </div>
+
+  <!-- ── Section 09 ── -->
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">09</span>
+      <h2>Method 4 — f-strings (Recommended)</h2>
+    </div>
+    <p>f-strings are the modern, recommended way to format strings. Prefix the string with <code>f</code> and place variable names inside <code>{}</code>.</p>
+
+    <div class="code-block">
+      <span class="code-filename">method4.py</span>
+      <pre><code><var>name</var> <op>=</op> <str>"Nimal"</str>
+<var>age</var> <op>=</op> <num>20</num>
+<fn>print</fn>(<str>f"My name is {name} and I am {age} years old."</str>)</code></pre>
+    </div>
+
+    <div class="output-block">
+      <div class="out-label">Output</div>
+      My name is Nimal and I am 20 years old.
+    </div>
+
+    <p class="mt">f-strings also support decimal formatting:</p>
+
+    <div class="code-block">
+      <pre><code><var>marks</var> <op>=</op> <num>87.5678</num>
+<fn>print</fn>(<str>f"Marks = {marks:.2f}"</str>)</code></pre>
+    </div>
+
+    <div class="output-block">
+      <div class="out-label">Output</div>
+      Marks = 87.57
+    </div>
+
+    <p class="mt">You can even put expressions directly inside <code>{}</code>:</p>
+
+    <div class="code-block">
+      <pre><code><var>a</var> <op>=</op> <num>10</num>
+<var>b</var> <op>=</op> <num>5</num>
+<fn>print</fn>(<str>f"{a} + {b} = {a+b}"</str>)</code></pre>
+    </div>
+
+    <div class="output-block">
+      <div class="out-label">Output</div>
+      10 + 5 = 15
+    </div>
+  </div>
+
+  <!-- ── Section 10 ── -->
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">10</span>
+      <h2>Escape Characters</h2>
+    </div>
+    <p>Escape characters let you add special formatting inside strings.</p>
+
+    <div class="code-block">
+      <span class="code-filename">escape.py</span>
+      <pre><code><var>name</var> <op>=</op> <str>"Nimal"</str>
+
+<cmt># \n — new line</cmt>
+<fn>print</fn>(<str>f"Student Report\nName: {name}"</str>)
+
+<cmt># \t — tab</cmt>
+<fn>print</fn>(<str>"Name\tAge"</str>)
+<fn>print</fn>(<str>"Sunil\t25"</str>)</code></pre>
+    </div>
+
+    <div class="output-block">
+      <div class="out-label">Output</div>
+      Student Report<br>Name: Nimal<br><br>Name&nbsp;&nbsp;&nbsp;&nbsp;Age<br>Sunil&nbsp;&nbsp;&nbsp;25
+    </div>
+  </div>
+
+  <!-- ── Section 11 ── -->
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">11</span>
+      <h2>Comments</h2>
+    </div>
+    <p>A comment is a note for humans. Python ignores comments completely — they do not affect how the program runs.</p>
+
+    <p><strong>Single-line comments</strong> — use <code>#</code>:</p>
+
+    <div class="code-block">
+      <pre><code><cmt># storing student name</cmt>
+<var>name</var> <op>=</op> <str>"Nimal"</str>
+<fn>print</fn>(<var>name</var>)</code></pre>
+    </div>
+
+    <p class="mt"><strong>Inline comments</strong> — placed after code on the same line:</p>
+
+    <div class="code-block">
+      <pre><code><var>age</var> <op>=</op> <num>20</num>  <cmt># student's age</cmt>
+<fn>print</fn>(<var>age</var>)</code></pre>
+    </div>
+
+    <p class="mt"><strong>Multi-line comments</strong> — use triple quotes:</p>
+
+    <div class="code-block">
+      <pre><code><str>"""
+Student marks program
+Author: Nimal Perera
+Year: 2026
+"""</str></code></pre>
+    </div>
+  </div>
+
+  <!-- ── Section 12 ── -->
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">12</span>
+      <h2>String Literals Are Not Comments</h2>
+    </div>
+
+    <div class="code-compare">
+      <div class="pane wrong">
+        <span class="pane-tag wrong">Wrong — looks like a comment but isn't</span>
+        <pre><code><str>"Prints name"</str>
+<fn>print</fn>(<var>name</var>)</code></pre>
+      </div>
+      <div class="pane correct">
+        <span class="pane-tag correct">Correct</span>
+        <pre><code><cmt># Prints name</cmt>
+<fn>print</fn>(<var>name</var>)</code></pre>
+      </div>
+    </div>
+
+    <p class="mt">Python treats <code>"Prints name"</code> as a string, not a comment. Beginners should avoid this style and use <code>#</code> instead.</p>
+
+    <div class="callout note">
+      <strong>Proper use of string literals: docstrings</strong>
+      Triple-quoted strings placed at the start of a function are called <em>docstrings</em> — a special case we will study later with functions:
+      <div class="code-block mt-sm">
+        <pre><code><kw>def</kw> <fn>greet</fn>():
+    <str>"""Print greeting message"""</str>
+    <fn>print</fn>(<str>"Hello"</str>)</code></pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Section 13 ── -->
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">13</span>
+      <h2>Real Example — Student Report</h2>
+    </div>
+
+    <div class="code-block">
+      <span class="code-filename">student_report.py</span>
+      <pre><code><cmt># Student report program</cmt>
+<var>name</var> <op>=</op> <fn>input</fn>(<str>"Enter student name: "</str>)
+<var>marks</var> <op>=</op> <fn>float</fn>(<fn>input</fn>(<str>"Enter marks: "</str>))
+
+<fn>print</fn>(<str>f"Student: {name}"</str>)
+<fn>print</fn>(<str>f"Marks: {marks:.2f}"</str>)</code></pre>
+    </div>
+
+    <div class="output-block">
+      <div class="out-label">Example Output</div>
+      Student: Nimal Silva<br>Marks: 88.50
+    </div>
+  </div>
+
+  <!-- ── Summary ── -->
+  <div class="summary">
+    <h2>Lesson Summary</h2>
+    <ul>
+      <li>Strings are made of characters; each has an index starting from 0. Use <code>name[0]</code>, <code>name[-1]</code>, <code>name[0:3]</code>, and <code>len(name)</code> to access and measure them</li>
+      <li><strong>Method 1</strong> — commas: <code>print("Hello", name)</code></li>
+      <li><strong>Method 2</strong> — concatenation: <code>print("Hello " + name)</code> — numbers need <code>str()</code></li>
+      <li><strong>Method 3</strong> — old-style %: <code>print("Age: %d" % age)</code></li>
+      <li><strong>Method 4 (best)</strong> — f-strings: <code>print(f"Age: {age}")</code> — supports expressions and <code>:.2f</code> decimal formatting</li>
+      <li>Single-line comments use <code>#</code>; multi-line use triple quotes. Avoid bare string literals as fake comments</li>
+    </ul>
+  </div>
+
+  <!-- ── Mini Exercise ── -->
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">★</span>
+      <h2>Mini Exercise</h2>
+    </div>
+    <div class="callout tip">
+      <strong>Try it yourself</strong>
+      Write a program that:
+      <ul style="margin-top:8px; margin-bottom:0;">
+        <li>asks for student name</li>
+        <li>asks for exam marks</li>
+        <li>prints a report like: <code>Student Report / Name: Sunil Perera / Marks: 90.50</code></li>
+        <li>uses f-strings</li>
+        <li>uses comments</li>
+        <li>includes one <code>%</code> formatting example</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="next-lesson">
+    <div>
+      <div class="nl-label">Next lesson</div>
+      <div class="nl-title">Python Functions</div>
+    </div>
+    <a class="next-link" href="lesson-17.html">Continue →</a>
+  </div>
+
+</div>
+</body>
+</html>
