@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Python Functions — Lesson 17</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="lesson-styles.css"/>
+</head>
+<body>
+<div class="page">
+
+  <div class="topbar">
+    <span class="topbar-course">Python Programming</span>
+    <span class="topbar-lesson">Lesson 17 of 20</span>
+  </div>
+
+  <div class="page-header">
+    <div class="label">Lesson 17</div>
+    <h1>Python Functions</h1>
+    <p class="intro">
+      Until now, we have written Python programs line by line. Functions help us organize code into reusable blocks — like a small machine that takes input, does a task, and may give back a result.
+    </p>
+  </div>
+
+  <div class="objectives">
+    <h2>By the end of this lesson you will be able to</h2>
+    <ul>
+      <li>Define functions using the <code>def</code> keyword</li>
+      <li>Call functions correctly</li>
+      <li>Pass arguments into functions</li>
+      <li>Return values using the <code>return</code> keyword</li>
+      <li>Organize code into reusable blocks to make more organised code</li>
+    </ul>
+  </div>
+
+  <!-- ── Section 01 ── -->
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">01</span>
+      <h2>Why Do We Need Functions?</h2>
+    </div>
+    <p>Consider a small program written line by line:</p>
+
+    <div class="code-block">
+      <pre><code><var>name</var> <op>=</op> <fn>input</fn>(<str>"Enter your name: "</str>)
+<fn>print</fn>(<str>"Hello"</str>, <var>name</var>)
+
+<var>age</var> <op>=</op> <fn>int</fn>(<fn>input</fn>(<str>"Enter your age: "</str>))
+<fn>print</fn>(<str>"You are"</str>, <var>age</var>, <str>"years old"</str>)</code></pre>
+    </div>
+
+    <p>This works well for small programs. But imagine writing a larger program with:</p>
+    <ul>
+      <li>student registration</li>
+      <li>mark calculation</li>
+      <li>report generation</li>
+      <li>grade assignment</li>
+    </ul>
+
+    <p>If we keep writing everything line by line, the code becomes:</p>
+    <ul>
+      <li>long</li>
+      <li>repetitive</li>
+      <li>difficult to read</li>
+      <li>difficult to debug</li>
+    </ul>
+
+    <p>This is where functions become useful. Think of a function as a small machine:</p>
+    <ul>
+      <li>you give it something (input)</li>
+      <li>it does a task</li>
+      <li>it may give back a result (output)</li>
+    </ul>
+  </div>
+
+  <!-- ── Section 02 ── -->
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">02</span>
+      <h2>What Is a Function?</h2>
+    </div>
+    <p>A function is a named block of code designed to perform a specific task.</p>
+    <p>Instead of writing the same thing repeatedly:</p>
+
+    <div class="code-block">
+      <pre><code><fn>print</fn>(<str>"Hello"</str>)
+<fn>print</fn>(<str>"Hello"</str>)
+<fn>print</fn>(<str>"Hello"</str>)</code></pre>
+    </div>
+
+    <p>We can create a function and use it multiple times:</p>
+
+    <div class="code-block">
+      <pre><code><kw>def</kw> <fn>greet</fn>():
+    <fn>print</fn>(<str>"Hello"</str>)</code></pre>
+    </div>
+
+    <p>Breaking it down:</p>
+    <div class="steps">
+      <div class="step"><span class="step-n">1</span><code>def</code> means <em>define a function</em></div>
+      <div class="step"><span class="step-n">2</span><code>greet</code> is the function name</div>
+      <div class="step"><span class="step-n">3</span><code>()</code> holds inputs — currently none</div>
+      <div class="step"><span class="step-n">4</span><code>:</code> starts the function block</div>
+      <div class="step"><span class="step-n">5</span>The indented code belongs to the function</div>
+    </div>
+
+    <div class="callout note">
+      <strong>Definition vs execution</strong>
+      Writing <code>def greet():</code> only defines the function. It does not run yet. You must call it separately.
+    </div>
+  </div>
+
+  <!-- ── Section 03 ── -->
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">03</span>
+      <h2>Calling a Function</h2>
+    </div>
+    <p>To run a function, write its name followed by parentheses:</p>
+
+    <div class="code-block">
+      <span class="code-filename">example.py</span>
+      <pre><code><kw>def</kw> <fn>greet</fn>():
+    <fn>print</fn>(<str>"Hello"</str>)
+
+<fn>greet</fn>()</code></pre>
+    </div>
+
+    <div class="output-block">
+      <div class="out-label">Output</div>
+      Hello
+    </div>
+
+    <p class="mt">You can call the same function multiple times:</p>
+
+    <div class="code-block">
+      <pre><code><fn>greet</fn>()
+<fn>greet</fn>()
+<fn>greet</fn>()</code></pre>
+    </div>
+
+    <div class="output-block">
+      <div class="out-label">Output</div>
+      Hello<br>Hello<br>Hello
+    </div>
+
+    <p class="mt-sm">This is better than rewriting the same code three times.</p>
+  </div>
+
+  <!-- ── Section 04 ── -->
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">04</span>
+      <h2>Why Use Functions?</h2>
+    </div>
+
+    <p>Functions help us in three important ways:</p>
+
+    <p><strong>1. Reuse code</strong> — Instead of repeating code many times.</p>
+    <div class="code-compare">
+      <div class="pane wrong">
+        <span class="pane-tag wrong">Bad</span>
+        <pre><code><fn>print</fn>(<str>"Welcome"</str>)
+<fn>print</fn>(<str>"Welcome"</str>)
+<fn>print</fn>(<str>"Welcome"</str>)</code></pre>
+      </div>
+      <div class="pane correct">
+        <span class="pane-tag correct">Better</span>
+        <pre><code><kw>def</kw> <fn>welcome</fn>():
+    <fn>print</fn>(<str>"Welcome"</str>)
+
+<fn>welcome</fn>()
+<fn>welcome</fn>()
+<fn>welcome</fn>()</code></pre>
+      </div>
+    </div>
+
+    <p class="mt"><strong>2. Make code organised</strong></p>
+    <div class="code-compare">
+      <div class="pane wrong">
+        <span class="pane-tag wrong">Without functions</span>
+        <pre><code><var>name</var> <op>=</op> <fn>input</fn>(<str>"Enter name: "</str>)
+<fn>print</fn>(<str>"Hello"</str>, <var>name</var>)
+
+<var>marks</var> <op>=</op> <fn>int</fn>(<fn>input</fn>(<str>"Enter marks: "</str>))
+<fn>print</fn>(<str>"Marks:"</str>, <var>marks</var>)</code></pre>
+      </div>
+      <div class="pane correct">
+        <span class="pane-tag correct">With functions</span>
+        <pre><code><kw>def</kw> <fn>greet_user</fn>():
+    <var>name</var> <op>=</op> <fn>input</fn>(<str>"Enter name: "</str>)
+    <fn>print</fn>(<str>"Hello"</str>, <var>name</var>)
+
+<fn>greet_user</fn>()</code></pre>
+      </div>
+    </div>
+
+    <p class="mt"><strong>3. Easier debugging</strong> — If something breaks, you can inspect one function. Instead of checking 200 lines, maybe only 5 lines.</p>
+  </div>
+
+  <!-- ── Section 05 ── -->
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">05</span>
+      <h2>Function Syntax</h2>
+    </div>
+    <p>General syntax:</p>
+
+    <div class="code-block">
+      <span class="code-filename">syntax</span>
+      <pre><code><kw>def</kw> function_name():
+    statements</code></pre>
+    </div>
+
+    <p>Example:</p>
+
+    <div class="code-block">
+      <span class="code-filename">example.py</span>
+      <pre><code><kw>def</kw> <fn>show_message</fn>():
+    <fn>print</fn>(<str>"Python is fun"</str>)
+
+<fn>show_message</fn>()</code></pre>
+    </div>
+
+    <div class="output-block">
+      <div class="out-label">Output</div>
+      Python is fun
+    </div>
+  </div>
+
+  <!-- ── Section 06 ── -->
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">06</span>
+      <h2>Functions with Parameters</h2>
+    </div>
+    <p>Sometimes functions need input. Instead of a fixed greeting:</p>
+
+    <div class="code-block">
+      <pre><code><kw>def</kw> <fn>greet</fn>():
+    <fn>print</fn>(<str>"Hello"</str>)</code></pre>
+    </div>
+
+    <p>We may want a personalised greeting. Add a <strong>parameter</strong>:</p>
+
+    <div class="code-block">
+      <span class="code-filename">example.py</span>
+      <pre><code><kw>def</kw> <fn>greet</fn>(<var>name</var>):
+    <fn>print</fn>(<str>"Hello"</str>, <var>name</var>)
+
+<fn>greet</fn>(<str>"Nimal"</str>)</code></pre>
+    </div>
+
+    <div class="output-block">
+      <div class="out-label">Output</div>
+      Hello Nimal
+    </div>
+
+    <p class="mt">The same function works with different inputs:</p>
+
+    <div class="code-block">
+      <pre><code><fn>greet</fn>(<str>"Sunil"</str>)
+<fn>greet</fn>(<str>"Kamal"</str>)
+<fn>greet</fn>(<str>"John"</str>)</code></pre>
+    </div>
+
+    <div class="output-block">
+      <div class="out-label">Output</div>
+      Hello Sunil<br>Hello Kamal<br>Hello John
+    </div>
+  </div>
+
+  <!-- ── Section 07 ── -->
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">07</span>
+      <h2>Multiple Parameters</h2>
+    </div>
+    <p>Functions can take multiple inputs:</p>
+
+    <div class="code-block">
+      <span class="code-filename">example.py</span>
+      <pre><code><kw>def</kw> <fn>introduce</fn>(<var>name</var>, <var>age</var>):
+    <fn>print</fn>(<str>f"My name is {name} and I am {age} years old"</str>)
+
+<fn>introduce</fn>(<str>"Nimal"</str>, <num>20</num>)</code></pre>
+    </div>
+
+    <div class="output-block">
+      <div class="out-label">Output</div>
+      My name is Nimal and I am 20 years old
+    </div>
+
+    <div class="callout warn">
+      <strong>Important rule: order matters</strong>
+      <code>introduce("Nimal", 20)</code> is correct. But <code>introduce(20, "Nimal")</code> gives the wrong meaning — Python produces no error, but the output becomes: <em>My name is 20 and I am Nimal years old</em>.
+    </div>
+  </div>
+
+  <!-- ── Section 08 ── -->
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">08</span>
+      <h2>Return Values</h2>
+    </div>
+    <p>Some functions produce results. Without <code>return</code>, you can only print:</p>
+
+    <div class="code-block">
+      <pre><code><kw>def</kw> <fn>add</fn>():
+    <var>result</var> <op>=</op> <num>5</num> <op>+</op> <num>3</num>
+    <fn>print</fn>(<var>result</var>)</code></pre>
+    </div>
+
+    <p>But sometimes we want to <em>store</em> the result and use it elsewhere. Use <code>return</code>:</p>
+
+    <div class="code-block">
+      <span class="code-filename">example.py</span>
+      <pre><code><kw>def</kw> <fn>add</fn>():
+    <kw>return</kw> <num>5</num> <op>+</op> <num>3</num>
+
+<var>answer</var> <op>=</op> <fn>add</fn>()
+<fn>print</fn>(<var>answer</var>)</code></pre>
+    </div>
+
+    <div class="output-block">
+      <div class="out-label">Output</div>
+      8
+    </div>
+
+    <p class="mt"><strong>Why return is more flexible:</strong></p>
+
+    <div class="code-block">
+      <pre><code><kw>def</kw> <fn>square</fn>():
+    <kw>return</kw> <num>4</num> <op>*</op> <num>4</num>
+
+<var>result</var> <op>=</op> <fn>square</fn>()
+<fn>print</fn>(<var>result</var>)          <cmt># 16</cmt>
+
+<var>x</var> <op>=</op> <fn>square</fn>() <op>+</op> <num>10</num>
+<fn>print</fn>(<var>x</var>)              <cmt># 26</cmt></code></pre>
+    </div>
+  </div>
+
+  <!-- ── Section 09 ── -->
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">09</span>
+      <h2>Functions with Parameters and Return</h2>
+    </div>
+    <p>This combination is the most common pattern in real programs:</p>
+
+    <div class="code-block">
+      <span class="code-filename">example.py</span>
+      <pre><code><kw>def</kw> <fn>add_numbers</fn>(<var>a</var>, <var>b</var>):
+    <kw>return</kw> <var>a</var> <op>+</op> <var>b</var>
+
+<var>result</var> <op>=</op> <fn>add_numbers</fn>(<num>10</num>, <num>5</num>)
+<fn>print</fn>(<var>result</var>)</code></pre>
+    </div>
+
+    <div class="output-block">
+      <div class="out-label">Output</div>
+      15
+    </div>
+
+    <p class="mt">You can also pass the call directly to <code>print()</code>:</p>
+
+    <div class="code-block">
+      <pre><code><fn>print</fn>(<fn>add_numbers</fn>(<num>4</num>, <num>6</num>))
+<fn>print</fn>(<fn>add_numbers</fn>(<num>100</num>, <num>50</num>))</code></pre>
+    </div>
+
+    <div class="output-block">
+      <div class="out-label">Output</div>
+      10<br>150
+    </div>
+  </div>
+
+  <!-- ── Section 10 ── -->
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">10</span>
+      <h2>Local Variables</h2>
+    </div>
+    <p>Variables created inside a function belong only to that function. This is called <strong>local scope</strong>.</p>
+
+    <div class="code-block">
+      <span class="code-filename">scope.py</span>
+      <pre><code><kw>def</kw> <fn>test</fn>():
+    <var>x</var> <op>=</op> <num>10</num>
+    <fn>print</fn>(<var>x</var>)    <cmt># Works — x is visible here</cmt>
+
+<fn>test</fn>()
+
+<fn>print</fn>(<var>x</var>)        <cmt># Error — x does not exist outside the function</cmt></code></pre>
+    </div>
+
+    <div class="callout note">
+      <strong>Local scope</strong>
+      Because <code>x</code> is defined inside <code>test()</code>, it exists only while the function is running. Once the function ends, <code>x</code> is gone.
+    </div>
+  </div>
+
+  <!-- ── Section 11 ── -->
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">11</span>
+      <h2>The Difference Between <code>print()</code> and <code>return</code></h2>
+    </div>
+    <p>This confuses many beginners. Here is the clear distinction:</p>
+
+    <div class="code-compare">
+      <div class="pane wrong">
+        <span class="pane-tag wrong">print() — displays value</span>
+        <pre><code><kw>def</kw> <fn>test</fn>():
+    <fn>print</fn>(<num>5</num>)
+
+<fn>test</fn>()</code></pre>
+      </div>
+      <div class="pane correct">
+        <span class="pane-tag correct">return — sends value back</span>
+        <pre><code><kw>def</kw> <fn>test</fn>():
+    <kw>return</kw> <num>5</num>
+
+<var>x</var> <op>=</op> <fn>test</fn>()
+<fn>print</fn>(<var>x</var>)</code></pre>
+      </div>
+    </div>
+
+    <p class="mt">Watch what happens when you try to store the result of a <code>print()</code>-only function:</p>
+
+    <div class="code-block">
+      <span class="code-filename">example.py</span>
+      <pre><code><kw>def</kw> <fn>test</fn>():
+    <fn>print</fn>(<num>5</num>)
+
+<var>x</var> <op>=</op> <fn>test</fn>()
+<fn>print</fn>(<var>x</var>)</code></pre>
+    </div>
+
+    <div class="output-block">
+      <div class="out-label">Output</div>
+      5<br>None
+    </div>
+
+    <div class="callout note">
+      <strong>Why None?</strong>
+      The function printed <code>5</code> but returned nothing. Python automatically stores <code>None</code> when a function has no <code>return</code> statement.
+    </div>
+  </div>
+
+  <!-- ── Section 12 ── -->
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">12</span>
+      <h2>None and Functions Without Return</h2>
+    </div>
+    <p>If a function has no <code>return</code>, Python automatically returns <code>None</code>. These two are equivalent:</p>
+
+    <div class="code-compare">
+      <div class="pane wrong">
+        <span class="pane-tag wrong">What you write</span>
+        <pre><code><kw>def</kw> <fn>hello</fn>():
+    <fn>print</fn>(<str>"Hello"</str>)</code></pre>
+      </div>
+      <div class="pane correct">
+        <span class="pane-tag correct">What Python sees</span>
+        <pre><code><kw>def</kw> <fn>hello</fn>():
+    <fn>print</fn>(<str>"Hello"</str>)
+    <kw>return</kw> <kw>None</kw></code></pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Section 13 ── -->
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">13</span>
+      <h2>Good Function Naming</h2>
+    </div>
+    <p>Function names should clearly describe what the function does.</p>
+
+    <div class="code-compare">
+      <div class="pane wrong">
+        <span class="pane-tag wrong">Bad — unclear</span>
+        <pre><code><kw>def</kw> <fn>x</fn>():
+    <fn>print</fn>(<str>"Hello"</str>)</code></pre>
+      </div>
+      <div class="pane correct">
+        <span class="pane-tag correct">Better — clear purpose</span>
+        <pre><code><kw>def</kw> <fn>print_greeting</fn>():
+    <fn>print</fn>(<str>"Hello"</str>)</code></pre>
+      </div>
+    </div>
+
+    <p class="mt">Use descriptive names:</p>
+    <ul>
+      <li><code>calculate_total()</code></li>
+      <li><code>print_report()</code></li>
+      <li><code>get_grade()</code></li>
+      <li><code>find_average()</code></li>
+    </ul>
+
+    <p>Avoid vague names like <code>abc()</code>, <code>temp()</code>, or <code>data1()</code> unless truly temporary.</p>
+
+    <div class="callout tip">
+      <strong>Comments in functions</strong>
+      Add a short comment inside complex functions to describe what they do. This improves readability for you and others who read your code later.
+      <div class="code-block mt-sm">
+        <pre><code><kw>def</kw> <fn>add_numbers</fn>(<var>a</var>, <var>b</var>):
+    <cmt># returns sum of two numbers</cmt>
+    <kw>return</kw> <var>a</var> <op>+</op> <var>b</var></code></pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Section 14 ── -->
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">14</span>
+      <h2>Complete Example — Student Average</h2>
+    </div>
+
+    <div class="code-block">
+      <span class="code-filename">average.py</span>
+      <pre><code><kw>def</kw> <fn>calculate_average</fn>(<var>mark1</var>, <var>mark2</var>, <var>mark3</var>):
+    <var>average</var> <op>=</op> (<var>mark1</var> <op>+</op> <var>mark2</var> <op>+</op> <var>mark3</var>) <op>/</op> <num>3</num>
+    <kw>return</kw> <var>average</var>
+
+<var>result</var> <op>=</op> <fn>calculate_average</fn>(<num>80</num>, <num>90</num>, <num>100</num>)
+<fn>print</fn>(<str>"Average ="</str>, <var>result</var>)</code></pre>
+    </div>
+
+    <div class="output-block">
+      <div class="out-label">Output</div>
+      Average = 90.0
+    </div>
+  </div>
+
+  <!-- ── Section 15 ── -->
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">15</span>
+      <h2>Complete Example — Grade Calculator</h2>
+    </div>
+
+    <div class="code-block">
+      <span class="code-filename">grade_calc.py</span>
+      <pre><code><kw>def</kw> <fn>get_grade</fn>(<var>mark</var>):
+    <kw>if</kw> <var>mark</var> <op>&gt;=</op> <num>75</num>:
+        <kw>return</kw> <str>"A"</str>
+    <kw>elif</kw> <var>mark</var> <op>&gt;=</op> <num>65</num>:
+        <kw>return</kw> <str>"B"</str>
+    <kw>elif</kw> <var>mark</var> <op>&gt;=</op> <num>50</num>:
+        <kw>return</kw> <str>"C"</str>
+    <kw>else</kw>:
+        <kw>return</kw> <str>"F"</str>
+
+<var>grade</var> <op>=</op> <fn>get_grade</fn>(<num>82</num>)
+<fn>print</fn>(<str>"Grade:"</str>, <var>grade</var>)</code></pre>
+    </div>
+
+    <div class="output-block">
+      <div class="out-label">Output</div>
+      Grade: A
+    </div>
+  </div>
+
+  <!-- ── Section 16 ── -->
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">16</span>
+      <h2>Real Example — Student Report System</h2>
+    </div>
+    <p>Functions can call each other to build larger programs:</p>
+
+    <div class="code-block">
+      <span class="code-filename">report.py</span>
+      <pre><code><kw>def</kw> <fn>get_total</fn>(<var>mark1</var>, <var>mark2</var>):
+    <kw>return</kw> <var>mark1</var> <op>+</op> <var>mark2</var>
+
+<kw>def</kw> <fn>get_average</fn>(<var>total</var>):
+    <kw>return</kw> <var>total</var> <op>/</op> <num>2</num>
+
+<var>total</var> <op>=</op> <fn>get_total</fn>(<num>80</num>, <num>90</num>)
+<var>average</var> <op>=</op> <fn>get_average</fn>(<var>total</var>)
+
+<fn>print</fn>(<str>"Total ="</str>, <var>total</var>)
+<fn>print</fn>(<str>"Average ="</str>, <var>average</var>)</code></pre>
+    </div>
+
+    <div class="output-block">
+      <div class="out-label">Output</div>
+      Total = 170<br>Average = 85.0
+    </div>
+  </div>
+
+  <!-- ── Section 17 ── -->
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">17</span>
+      <h2>Common Beginner Mistakes</h2>
+    </div>
+
+    <div class="mistake">
+      <div class="mistake-title">Mistake 1 — Forgetting parentheses when calling</div>
+      <div class="mistake-body">
+        <div class="code-compare">
+          <div class="pane wrong">
+            <span class="pane-tag wrong">Wrong</span>
+            <pre><code><err-tok>greet</err-tok>   <cmt># does not call the function</cmt></code></pre>
+          </div>
+          <div class="pane correct">
+            <span class="pane-tag correct">Correct</span>
+            <pre><code><fn>greet</fn>()  <cmt># parentheses are required</cmt></code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mistake">
+      <div class="mistake-title">Mistake 2 — Forgetting indentation</div>
+      <div class="mistake-body">
+        <div class="code-compare">
+          <div class="pane wrong">
+            <span class="pane-tag wrong">Wrong — IndentationError</span>
+            <pre><code><kw>def</kw> <fn>greet</fn>():
+<err-tok>print</err-tok>(<str>"Hello"</str>)</code></pre>
+          </div>
+          <div class="pane correct">
+            <span class="pane-tag correct">Correct</span>
+            <pre><code><kw>def</kw> <fn>greet</fn>():
+    <fn>print</fn>(<str>"Hello"</str>)</code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mistake">
+      <div class="mistake-title">Mistake 3 — Confusing print() and return</div>
+      <div class="mistake-body">
+        <p>A function that uses <code>print()</code> only displays a value — it cannot be stored or used in calculations. A function with <code>return</code> sends the value back to the caller so it can be stored, printed, or used in further computation. Understand their difference clearly.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Section 18 ── -->
+  <div class="section">
+    <div class="section-heading">
+      <span class="section-num">18</span>
+      <h2>Mini Exercises</h2>
+    </div>
+
+    <div class="callout tip">
+      <strong>Exercise 1</strong>
+      Create a function <code>say_hello()</code> that prints: <code>Hello World</code>
+    </div>
+
+    <div class="callout tip">
+      <strong>Exercise 2</strong>
+      Create a function <code>square(number)</code> that returns the square of the input.<br>
+      <code>print(square(5))</code> should output <code>25</code>.
+    </div>
+
+    <div class="callout tip">
+      <strong>Exercise 3</strong>
+      Create a function <code>get_grade(mark)</code> using these rules:
+      <ul style="margin-top:8px; margin-bottom:0;">
+        <li>75 and above → A</li>
+        <li>65–74 → B</li>
+        <li>50–64 → C</li>
+        <li>below 50 → F</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ── Summary ── -->
+  <div class="summary">
+    <h2>Lesson Summary</h2>
+    <ul>
+      <li>A function is a named block of code that performs a specific task — defined with <code>def</code> and called with <code>functionname()</code></li>
+      <li>Parameters let you pass input into functions; multiple parameters are separated by commas and order matters</li>
+      <li><code>return</code> sends a value back to the caller — more flexible than <code>print()</code> alone</li>
+      <li>Variables created inside a function are local — they exist only within that function (local scope)</li>
+      <li>A function with no <code>return</code> statement automatically returns <code>None</code></li>
+      <li>Use descriptive function names like <code>calculate_total()</code> instead of <code>x()</code> or <code>temp()</code></li>
+    </ul>
+  </div>
+
+  <div class="next-lesson">
+    <div>
+      <div class="nl-label">Next lesson</div>
+      <div class="nl-title">Python Built-in Functions</div>
+    </div>
+    <a class="next-link" href="lesson-18.html">Continue →</a>
+  </div>
+
+</div>
+</body>
+</html>
